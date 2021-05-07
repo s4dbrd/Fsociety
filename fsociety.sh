@@ -36,7 +36,21 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 function Menu(){
-    echo -e "${yellowColour}[1]${endColour}${blueColour} Añadir Repositorios${endColour}\n\n${yellowColour}[2]${endColour}${blueColour} Instalar Herramientas${endColour}\n\n${yellowColour}[3]${endColour}${blueColour} Uso Herramientas${endColour}\n\n${yellowColour}[4]${endColour}${blueColour} Menú Ayuda${endColour}\n"
+    echo -e "\n${yellowColour}[1]${endColour}${blueColour} Añadir Repositorios y Actualizar Sistema${endColour}\n\n${yellowColour}[2]${endColour}${blueColour} Instalar Herramientas${endColour}\n\n${yellowColour}[3]${endColour}${blueColour} Uso Herramientas${endColour}\n\n${yellowColour}[4]${endColour}${blueColour} Menú Ayuda${endColour}\n\n${yellowColour}[5]${endColour}${blueColour} Salir${endColour}\n"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+    read opcion
+}
+
+function MenuOpcion1(){
+    echo -e "\n${purpleColour}[1]${endColour}${turquoiseColour} Actualizar Sistema${endColour}\n\n${purpleColour}[2]${endColour}${turquoiseColour} Ver contenido de sources.list${endColour}\n\n${purpleColour}[3]${endColour}${turquoiseColour} Añadir Repositorios de Kali Linux${endColour}\n\n${purpleColour}[4]${endColour}${turquoiseColour} Borrar repositorios de Kali Linux${endColour}\n\n${purpleColour}[5]${endColour}${turquoiseColour} Salir${endColour}\n"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+    read opcion1
+}
+
+function Principal(){
+    clear
+    Banner
+    Menu
 }
 
 function PanelAyuda(){
@@ -49,47 +63,85 @@ function Actualizar(){
     if [[ $opcion = [Ss] ]]; then
         echo -e "\n${yellowColour}[*]${endColour}${grayColour} Actualizando sistema...${endColour}\n"
         while true; do
-            sudo apt update -y
+            sleep 1
+            sudo apt update -y 2>/dev/null
             echo -ne "\n${yellowColour}[*]${endColour}${blueColour} ¿Tienes todos los paquetes actualizados?${endColour}${yellowColour} [S/N]: ${endColour}"
             read option
             if [[ $option = [Ss] ]]; then
-                exit 0;
+                return 0;
             else
                 echo -e "\n${yellowColour}[*]${endColour}${grayColour} Upgradeando sistema...${endColour}\n"
-                sudo apt upgrade -y
+                sleep 1
+                sudo apt upgrade -y 2>/dev/null
             fi
         done
     else
         echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}"
         exit 1
+        return 1
     fi
 }
 
-function Repositorios(){
+function AñadirRepositorios(){
     repositorio="deb http://http.kali.org/kali kali-rolling main contrib non-free"
-    comando=`grep $repositorio /etc/apt/sources.list 2>/dev/null`
-    echo -ne "\n${yellowColour}[*]${endColour}${blueColour} Se va a añadir repositorios de Kali Linux, ¿seguir?${endColour}${yellowColour} [S/N]: ${endColour}"
+    comando=`grep "$repositorio" /etc/apt/sources.list`
+    echo -ne "\n${yellowColour}[*]${endColour}${blueColour} Se va a añadir repositorios de Kali Linux, ¿continuar?${endColour}${yellowColour} [S/N]: ${endColour}"
     read opcion
     if [[ $opcion = [Ss] ]]; then
+        sleep 1
         if [ -z "$comando" ]; then
             echo -e "\n${yellowColour}[*]${endColour}${grayColour} No se detecto repositorios en sources.list, continuando...${endColour}\n"
+            sleep 1
             sudo echo "$repositorio" >> /etc/apt/sources.list
         else
-            echo -e "\n${redColour}[!]${endColour}${redColour} Se ha detectado los repositorios en el sources.list ${endColour}${redColour}[!]${endColour}\n"
-            exit 1
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Se ha detectado los repositorios en el sources.list ${endColour}${redColour}[!]${endColour}\n"
+            return 1
         fi
     else
         echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}"
         exit 1
+        return 1
     fi
 }
 
+function VerRepositorios(){
+    echo -e "\n${yellowColour}[*]${endColour}${blueColour} Mostrando contenido del sources.list${endColour}\n"
+    sleep 1
+    cat /etc/apt/sources.list
+}
+
+function BorrarRepositorios(){
+    echo -e "\n${yellowColour}[*]${endColour}${blueColour} Borrando contenido del sources.list${endColour}"
+    sleep 1
+    comando=`sed -e 's/deb http:\/\/http.kali.org\/kali kali-rolling main contrib non-free//g' -i /etc/apt/sources.list`
+    if [ $? -eq 0 ]; then
+        echo -e "\n${yellowColour}[*]${endColour}${greenColour} El comando se ejecutó correctamente${endColour}\n"
+    else
+        echo -e "\n${redColour}[!]${endColour}${lightRed} No se pudo completar la ejecución del comando ${endColour}${redColour}[!]${endColour}\n"
+        return 1
+    fi
+}
+
+function Caso1(){
+    MenuOpcion1
+    if [[ $opcion1 = 1 ]]; then
+        Actualizar
+    elif [[ $opcion1 = 2 ]]; then
+        VerRepositorios
+    elif [[ $opcion1 = 3 ]]; then
+        AñadirRepositorios
+    elif [[ $opcion1 = 4 ]]; then
+        BorrarRepositorios
+    fi
+    sleep 1
+    Menu
+}
+
 # Main Program
-clear
-Banner
-Menu
-echo -ne "${yellowColour}Elige una opción: ${endColour}"
-read opcion
-case $opcion in
-    1) Actualizar ; Repositorios ; Menu;;
-esac
+Principal
+while [[ $opcion != 5 ]]; do
+    case $opcion in
+        1) Caso1;;
+        5) exit 1;;
+    esac
+done
