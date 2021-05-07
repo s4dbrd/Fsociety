@@ -6,6 +6,7 @@
 greenColour="\e[0;32m\033[1m"
 endColour="\033[0m\e[0m"
 redColour="\e[0;31m\033[1m"
+lightRed="\e[0;91m\033[1m"
 blueColour="\e[0;34m\033[1m"
 yellowColour="\e[0;33m\033[1m"
 purpleColour="\e[0;35m\033[1m"
@@ -13,19 +14,19 @@ turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
 function Banner(){
-    echo '  __                _      _         
+    echo -e "${lightRed}  __                _      _         
  / _|___  ___   ___(_) ___| |_ _   _ 
 | |_/ __|/ _ \ / __| |/ _ \ __| | | |
 |  _\__ \ (_) | (__| |  __/ |_| |_| |
-|_| |___/\___/ \___|_|\___|\__|\__, |
+|_| |___/\___/ \___|_|\___|\__|\__, |\t\t\t  ${grayColour}Created by: ${endColour}${yellowColour}Adrián Díaz (s4dbrd)${lightRed}
                                |___/ 
- '
+ "
 }
 
 trap ctrl_c INT
 
 function ctrl_c(){
-    echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}"
+    echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}\n"
     exit 1
 }
 
@@ -33,6 +34,10 @@ if [[ $EUID -ne 0 ]]; then
     echo -e "\n${redColour}[!]${endColour}${redColour} Tienes que ser root para ejecutar el script ${endColour}${redColour}[!]"
     exit 1
 fi
+
+function Menu(){
+    echo -e "${yellowColour}[1]${endColour}${blueColour} Añadir Repositorios${endColour}\n\n${yellowColour}[2]${endColour}${blueColour} Instalar Herramientas${endColour}\n\n${yellowColour}[3]${endColour}${blueColour} Uso Herramientas${endColour}\n\n${yellowColour}[4]${endColour}${blueColour} Menú Ayuda${endColour}\n"
+}
 
 function PanelAyuda(){
     echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./fsociety.sh${endColour}"
@@ -78,3 +83,13 @@ function Repositorios(){
         exit 1
     fi
 }
+
+# Main Program
+clear
+Banner
+Menu
+echo -ne "${yellowColour}Elige una opción: ${endColour}"
+read opcion
+case $opcion in
+    1) Actualizar ; Repositorios ; Menu;;
+esac
