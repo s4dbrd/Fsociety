@@ -13,6 +13,16 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
+#Awk Colours
+awkGREEN='\033[01;32m'
+awkPURPLE='\033[01;95m'
+awkGRAY='\033[01;37m'
+
+echo "Col1 Col2 Col3 Col4" | \
+awk -v r=$RED -v y=$YELLOW -v g=$GREEN -v b=$BLUE -v n=$NONE \
+ '{printf r$1n y$2n g$3n b$4n "\n"}'
+
+
 function Banner(){
     echo -e "${lightRed}  __                _      _         
  / _|___  ___   ___(_) ___| |_ _   _ 
@@ -107,7 +117,10 @@ function AñadirRepositorios(){
 function VerRepositorios(){
     echo -e "\n${yellowColour}[*]${endColour}${blueColour} Mostrando contenido del sources.list${endColour}\n"
     sleep 1
-    cat /etc/apt/sources.list
+    sed -i '/^$/d' /etc/apt/sources.list
+    sed 's/  */&,/g' /etc/apt/sources.list| \
+awk -v r=$awkGRAY -v g=$awkGREEN -v p=$awkPURPLE \
+ '{printf p$1n r$2n g$3n"\n"}' FS=","
 }
 
 function BorrarRepositorios(){
