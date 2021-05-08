@@ -28,7 +28,7 @@ function Banner(){
  / _|___  ___   ___(_) ___| |_ _   _ 
 | |_/ __|/ _ \ / __| |/ _ \ __| | | |
 |  _\__ \ (_) | (__| |  __/ |_| |_| |
-|_| |___/\___/ \___|_|\___|\__|\__, |\t\t\t  ${grayColour}Created by: ${endColour}${yellowColour}Adrián Díaz (s4dbrd)${lightRed}
+|_| |___/\___/ \___|_|\___|\__|\__, |\t\t\t  ${grayColour}Created by: ${endColour}${yellowColour}Adrián Díaz${lightRed}
                                |___/ 
  "
 }
@@ -55,6 +55,10 @@ function MenuOpcion1(){
     echo -e "\n${purpleColour}[1]${endColour}${turquoiseColour} Actualizar Sistema${endColour}\n\n${purpleColour}[2]${endColour}${turquoiseColour} Ver contenido de sources.list${endColour}\n\n${purpleColour}[3]${endColour}${turquoiseColour} Añadir Repositorios de Kali Linux${endColour}\n\n${purpleColour}[4]${endColour}${turquoiseColour} Borrar repositorios de Kali Linux${endColour}\n\n${purpleColour}[5]${endColour}${turquoiseColour} Salir${endColour}\n"
     echo -ne "${yellowColour}Elige una opción: ${endColour}"
     read opcion1
+}
+
+function MenuOpcion2(){
+    echo -e "\n${purpleColour}[1]${endColour}${turquoiseColour} Actualizar Sistema${endColour}\n\n${purpleColour}[2]${endColour}${turquoiseColour} Ver contenido de sources.list${endColour}\n\n${purpleColour}[3]${endColour}${turquoiseColour} Añadir Repositorios de Kali Linux${endColour}\n\n${purpleColour}[4]${endColour}${turquoiseColour} Borrar repositorios de Kali Linux${endColour}\n\n${purpleColour}[5]${endColour}${turquoiseColour} Salir${endColour}\n"
 }
 
 function Principal(){
@@ -145,6 +149,9 @@ function Caso1(){
         AñadirRepositorios
     elif [[ $opcion1 = 4 ]]; then
         BorrarRepositorios
+    else
+        echo -e "\n${redColour}[!]${endColour}${lightRed} Introduce una opción correcta ${endColour}${redColour}[!]${endColour}\n"
+        return 1
     fi
     sleep 1
     Menu
