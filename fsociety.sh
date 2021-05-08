@@ -662,6 +662,112 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
+    elif [[ $opcion2 = 7 ]]; then
+        echo -e "
+        ${grayColour} Ataques a Aplicaciones Web${endColour}${greenColour}
+
+[1] apktool
+[2] dex2jar
+[3] diStorm3
+[4] edb-debugger
+[5] jad	
+[6] javasnoop
+[7] JD-GUI
+[8] OllyDbg
+[9] smali
+[10] Valgrind
+[11] YARA
+
+[0] Instalar todas las herramientas de WA
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion27
+        if [[ $opcion27 = 1 ]]; then
+            sudo apt install apktool
+        elif [[ $opcion27 = 2 ]]; then
+            sudo apt install dex2jar
+        elif [[ $opcion27 = 3 ]]; then
+            sudo apt install python-diStorm3
+        elif [[ $opcion27 = 4 ]]; then
+            sudo apt install edb-debugger
+        elif [[ $opcion27 = 5 ]]; then
+            sudo apt install jad
+        elif [[ $opcion27 = 6 ]]; then
+            sudo apt install javasnoop
+        elif [[ $opcion27 = 7 ]]; then
+            sudo apt install JD
+        elif [[ $opcion27 = 8 ]]; then
+            sudo apt install OllyDbg
+        elif [[ $opcion27 = 9 ]]; then
+            sudo apt install smali
+        elif [[ $opcion27 = 10 ]]; then
+            sudo apt install Valgrind
+        elif [[ $opcion27 = 11 ]]; then
+            sudo apt install YARA
+        elif [[ $opcion27 = 0 ]]; then
+            sudo apt install -y apktool dex2jar python-diStorm3 edb-debugger jad javasnoop JD OllyDbg smali Valgrind YARA
+        elif [[ $opcion27 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+    elif [[ $opcion2 = 8 ]]; then
+        echo -e "
+        ${grayColour} Herramientas de Explotación${endColour}${greenColour}
+
+[1] Armitage				[10] jboss-autopwn
+[2] Backdoor Factory				[11] Linux Exploit Suggester
+[3] BeEF				[12] Maltego Teeth
+[4] cisco-auditing-tool				[13] SET
+[5] cisco-global-exploiter			[14] ShellNoob
+[6] cisco-ocs				[15] sqlmap
+[7] cisco-torch				[16] THC-IPV6
+[8] commix				[17] Yersinia
+[9] crackle
+
+[0] Instalar todas las herramientas de Explotación
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion28
+        if [[ $opcion28 = 1 ]]; then
+            sudo apt install armitage
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 3 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 4 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
+        elif [[ $opcion28 = 2 ]]; then
+            sudo apt install 
     elif [[ $opcion2 = 0 ]]; then
         Principal
     fi
