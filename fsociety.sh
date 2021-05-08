@@ -66,7 +66,7 @@ ${purpleColour}[2]${endColour}${turquoiseColour} Análisis de Vulnerabilidades${
 ${purpleColour}[3]${endColour}${turquoiseColour} Ataques a Redes Inalámbricas${endColour}               ${purpleColour}[10]${endColour}${turquoiseColour} Post Explotación${endColour}
 ${purpleColour}[4]${endColour}${turquoiseColour} Evaluación de Base de Datos${endColour}                ${purpleColour}[11]${endColour}${turquoiseColour} Análisis Forense${endColour}
 ${purpleColour}[5]${endColour}${turquoiseColour} Ataques de contraseñas${endColour}                     ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
-${purpleColour}[6]${endColour}${turquoiseColour} Ataques a Aplicaciones Web${endColour}                           ${purpleColour}[13]${endColour}${turquoiseColour} Herramientas de Ingeniería Social${endColour}
+${purpleColour}[6]${endColour}${turquoiseColour} Ataques a Aplicaciones Web${endColour}                 ${purpleColour}[13]${endColour}${turquoiseColour} Herramientas de Ingeniería Social${endColour}
 ${purpleColour}[7]${endColour}${turquoiseColour} Ingeniería Inversa${endColour}${purpleColour}                         ${purpleColour}[14]${endColour}${turquoiseColour} Servicios del Sistema${endColour}
 
 
@@ -86,7 +86,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
 [6] braa					[35] Nmap
 [7] CaseFile					[36] ntop
 [8] CDPSnarf					[37] p0f
-[9] cisco-torch				[38] Parsero
+[9] cisco-torch				        [38] Parsero
 [10] Cookie Cadger				[39] Recon-ng
 [11] copy-router-config			        [40] SET
 [12] DMitry					[41] smtp-user-enum
@@ -228,7 +228,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         elif [[ $opcion21 = 57 ]]; then
             sudo apt install hping3
         elif [[ $opcion21 = 99 ]]; then
-            Principal
+            MenuOpcion21
         elif [[ $opcion21 = 0 ]]; then
             sudo apt install -y acccheck ace-voip amap automater braa casefile cdpsnarf cisco-torch cookie-cadger copy-router-config dmitry dnmap dnsenum dnsmap dnsrecon dnstracer dnswalk dotdotpwn enum4linux enumiax exploitdb fierce firewalk fragroute fragrouter ghost-phisher golismero goofile lbd maltego-teeth masscan metagoofil miranda nmap p0f parsero recon-ng set smtp-user-enum snmpcheck sslcaudit sslsplit sslstrip sslyze thc-ipv6 theharvester tlssled twofi urlcrazy wireshark wol-e xplico ismtp intrace hping3 && wget http://www.morningstarsecurity.com/downloads/bing-ip2hosts-0.4.tar.gz && tar -xzvf bing-ip2hosts-0.4.tar.gz && cp bing-ip2hosts-0.4/bing-ip2hosts /usr/local/bin/
         else
@@ -335,7 +335,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         elif [[ $opcion22 = 0 ]]; then
             sudo apt install -y bbqsql bed cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch copy-router-config doona dotdotpwn greenbone-security-assistant hexorbase jsql lynis nmap ohrwurm openvas-cli openvas-manager openvas-scanner oscanner powerfuzzer sfuzz sidguesser siparmyknife sqlmap sqlninja sqlsus thc-ipv6 tnscmd10g unix-privesc-check yersinia
         elif [[ $opcion22 = 99 ]]; then
-            Principal
+            MenuOpcion21
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
@@ -430,7 +430,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
             sudo apt install -y aircrack-ng asleap bluelog blueranger bluesnarfer bully cowpatty crackle eapmd5pass fern-wifi-cracker ghost-phisher giskismet gqrx kalibrate-rtl killerbee kismet mdk3 mfcuk mfoc mfterm multimon-ng pixiewps reaver redfang spooftooph wifi-honey wifitap wifite
         elif [[ $opcion23 = 99 ]]; then
             sleep 0.5
-            Principal
+            MenuOpcion21
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
@@ -438,8 +438,6 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
     elif [[ $opcion2 = 0 ]]; then
         Principal
     fi
-    echo -ne "${yellowColour}Elige una opción: ${endColour}"
-    read opcion21
 }
 
 function Principal(){
