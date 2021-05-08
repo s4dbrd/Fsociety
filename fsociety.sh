@@ -716,14 +716,14 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         echo -e "
         ${grayColour} Herramientas de Explotación${endColour}${greenColour}
 
-[1] Armitage				[10] jboss-autopwn
+[1] Armitage				        [10] jboss-autopwn
 [2] Backdoor Factory				[11] Linux Exploit Suggester
-[3] BeEF				[12] Maltego Teeth
+[3] BeEF				        [12] Maltego Teeth
 [4] cisco-auditing-tool				[13] SET
 [5] cisco-global-exploiter			[14] ShellNoob
-[6] cisco-ocs				[15] sqlmap
-[7] cisco-torch				[16] THC-IPV6
-[8] commix				[17] Yersinia
+[6] cisco-ocs				        [15] sqlmap
+[7] cisco-torch				        [16] THC-IPV6
+[8] commix				        [17] Yersinia
 [9] crackle
 
 [0] Instalar todas las herramientas de Explotación
@@ -733,41 +733,45 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         if [[ $opcion28 = 1 ]]; then
             sudo apt install armitage
         elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
+            sudo apt install backdoor-factory
         elif [[ $opcion28 = 3 ]]; then
-            sudo apt install 
+            sudo apt install beef-xss
         elif [[ $opcion28 = 4 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
-        elif [[ $opcion28 = 2 ]]; then
-            sudo apt install 
+            sudo apt install cisco-auditing-tool
+        elif [[ $opcion28 = 5 ]]; then
+            sudo apt install cisco-global-exploiter
+        elif [[ $opcion28 = 6 ]]; then
+            sudo apt install cisco-ocs
+        elif [[ $opcion28 = 7 ]]; then
+            sudo apt install cisco-torch
+        elif [[ $opcion28 = 8 ]]; then
+            sudo apt install git && git clone https://github.com/stasinopoulos/commix.git commix && cd commix && python ./commix.py --install
+        elif [[ $opcion28 = 9 ]]; then
+            sudo apt install crackle
+        elif [[ $opcion28 = 10 ]]; then
+            sudo apt install jboss-autopwn
+        elif [[ $opcion28 = 11 ]]; then
+            sudo apt install linux-exploit-suggester
+        elif [[ $opcion28 = 12 ]]; then
+            sudo apt install maltego-teeth
+        elif [[ $opcion28 = 13 ]]; then
+            `sudo apt install set`
+        elif [[ $opcion28 = 14 ]]; then
+            sudo apt install shellnoob
+        elif [[ $opcion28 = 15 ]]; then
+            sudo apt install sqlmap
+        elif [[ $opcion28 = 16 ]]; then
+            sudo apt install thc-ipv6
+        elif [[ $opcion28 = 17 ]]; then
+            sudo apt install yersinia
+        elif [[ $opcion28 = 0 ]]; then
+            sudo apt install -y armitage backdoor-factory cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch crackle jboss-autopwn linux-exploit-suggester maltego-teeth set shellnoob sqlmap thc-ipv6 yersinia beef-xss
+        elif [[ $opcion28 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
     elif [[ $opcion2 = 0 ]]; then
         Principal
     fi
