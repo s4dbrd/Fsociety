@@ -18,10 +18,6 @@ awkGREEN='\033[01;32m'
 awkPURPLE='\033[01;95m'
 awkGRAY='\033[01;37m'
 
-echo "Col1 Col2 Col3 Col4" | \
-awk -v r=$RED -v y=$YELLOW -v g=$GREEN -v b=$BLUE -v n=$NONE \
- '{printf r$1n y$2n g$3n b$4n "\n"}'
-
 
 function Banner(){
     echo -e "${lightRed}  __                _      _         
@@ -458,8 +454,8 @@ function PanelAyuda(){
 
 function Actualizar(){
     echo -ne "\n${yellowColour}[*]${endColour}${blueColour} Se tiene que actualizar el sistema, ¿seguir?${endColour}${yellowColour} [S/N]: ${endColour}"
-    read opcion
-    if [[ $opcion = [Ss] ]]; then
+    read opcionact
+    if [[ $opcionact = [Ss] ]]; then
         echo -e "\n${yellowColour}[*]${endColour}${grayColour} Actualizando sistema...${endColour}\n"
         while true; do
             sleep 0.5
@@ -467,17 +463,17 @@ function Actualizar(){
             echo -ne "\n${yellowColour}[*]${endColour}${blueColour} ¿Tienes todos los paquetes actualizados?${endColour}${yellowColour} [S/N]: ${endColour}"
             read option
             if [[ $option = [Ss] ]]; then
-                return 0;
+                return 0
             else
                 echo -e "\n${yellowColour}[*]${endColour}${grayColour} Upgradeando sistema...${endColour}\n"
                 sleep 0.5
                 sudo apt upgrade -y 2>/dev/null
+                return 0
             fi
         done
     else
         echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}"
         exit 1
-        return 1
     fi
 }
 
@@ -485,20 +481,20 @@ function AñadirRepositorios(){
     repositorio="deb http://http.kali.org/kali kali-rolling main contrib non-free"
     comando=`grep "$repositorio" /etc/apt/sources.list`
     echo -ne "\n${yellowColour}[*]${endColour}${blueColour} Se va a añadir repositorios de Kali Linux, ¿continuar?${endColour}${yellowColour} [S/N]: ${endColour}"
-    read opcion
-    if [[ $opcion = [Ss] ]]; then
+    read opcionrep
+    if [[ $opcionrep = [Ss] ]]; then
         sleep 0.5
         if [ -z "$comando" ]; then
             echo -e "\n${yellowColour}[*]${endColour}${grayColour} No se detecto repositorios en sources.list, continuando...${endColour}\n"
-            sleep 0.5
             sudo echo "$repositorio" >> /etc/apt/sources.list
+            sleep 0.5
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Se ha detectado los repositorios en el sources.list ${endColour}${redColour}[!]${endColour}\n"
-            return 1
+            sleep 0.5
         fi
     else
         echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}"
-        exit 1
+        sleep 1
         return 1
     fi
 }
@@ -520,31 +516,11 @@ function BorrarRepositorios(){
         echo -e "\n${yellowColour}[*]${endColour}${greenColour} El comando se ejecutó correctamente${endColour}\n"
     else
         echo -e "\n${redColour}[!]${endColour}${lightRed} No se pudo completar la ejecución del comando ${endColour}${redColour}[!]${endColour}\n"
-        return 1
-    fi
-}
-
-function Caso1(){
-    MenuOpcion1
-    if [[ $opcion1 = 1 ]]; then
-        Actualizar
-    elif [[ $opcion1 = 2 ]]; then
-        VerRepositorios
-    elif [[ $opcion1 = 3 ]]; then
-        AñadirRepositorios
-    elif [[ $opcion1 = 4 ]]; then
-        BorrarRepositorios
-    elif [[ $opcion1 = 5 ]]; then
-        sleep 0.5
-        Principal
-    else
-        echo -e "\n${redColour}[!]${endColour}${lightRed} Introduce una opción correcta ${endColour}${redColour}[!]${endColour}\n"
-        return 1
     fi
 }
 
 function Caso2(){
-    MenuGlogal2
+    MenuGlogal2   
     if [[ $opciong2 = 1 ]]; then
         MenuOpcion21
     elif [[ $opciong2 = 4 ]]; then
@@ -554,10 +530,24 @@ function Caso2(){
 }
 
 # Main Program
-Principal
-while [[ $opcion != 4 ]]; do
-    case $opcion in
-        1) Caso1;;
-        2) Caso2;;
-    esac
+while true; do
+    Principal
+    while [[ $opcion = 1 ]]; do
+        MenuOpcion1
+        if [[ $opcion1 = 1 ]]; then
+            Actualizar
+        elif [[ $opcion1 = 2 ]]; then
+            VerRepositorios
+        elif [[ $opcion1 = 3 ]]; then
+            AñadirRepositorios
+        elif [[ $opcion1 = 4 ]]; then
+            BorrarRepositorios
+        elif [[ $opcion1 = 5 ]]; then
+            sleep 0.5
+            Principal
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Introduce una opción correcta ${endColour}${redColour}[!]${endColour}\n"
+            sleep 0.5
+        fi
+    done
 done
