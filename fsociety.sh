@@ -550,4 +550,20 @@ while true; do
             sleep 0.5
         fi
     done
+
+    while [[ $opcion = 2 ]]; do
+        MenuGlogal2   
+        if [[ $opciong2 = 1 ]]; then
+            MenuOpcion21
+        elif [[ $opciong2 = 4 ]]; then
+            sleep 0.5
+            Principal
+        fi
+    done
+
+    if [[ $opcion = 4 ]]; then
+        echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}\n"
+        sleep 0.2
+        break
+    fi
 done
