@@ -65,9 +65,9 @@ ${purpleColour}[1]${endColour}${turquoiseColour} Recopilación de Información${
 ${purpleColour}[2]${endColour}${turquoiseColour} Análisis de Vulnerabilidades${endColour}               ${purpleColour}[9]${endColour}${turquoiseColour} Sniffing & Spoofing${endColour}
 ${purpleColour}[3]${endColour}${turquoiseColour} Ataques a Redes Inalámbricas${endColour}               ${purpleColour}[10]${endColour}${turquoiseColour} Post Explotación${endColour}
 ${purpleColour}[4]${endColour}${turquoiseColour} Evaluación de Base de Datos${endColour}                ${purpleColour}[11]${endColour}${turquoiseColour} Análisis Forense${endColour}
-${purpleColour}[5]${endColour}${turquoiseColour} Ataques a contraseñas${endColour}                      ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
-${purpleColour}[6]${endColour}${turquoiseColour} Ataques a Aplicaciones Web${endColour}                 ${purpleColour}[13]${endColour}${turquoiseColour} Herramientas de Ingeniería Social${endColour}
-${purpleColour}[7]${endColour}${turquoiseColour} Ingeniería Inversa${endColour}${purpleColour}                         ${purpleColour}[14]${endColour}${turquoiseColour} Servicios del Sistema${endColour}
+${purpleColour}[5]${endColour}${turquoiseColour} Crackeo de contraseñas${endColour}                     ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
+${purpleColour}[6]${endColour}${turquoiseColour} Ataques a Aplicaciones Web${endColour}                 ${purpleColour}[13]${endColour}${turquoiseColour} Hacking Hardware${endColour}
+${purpleColour}[7]${endColour}${turquoiseColour} Ingeniería Inversa${endColour}${purpleColour}                         ${purpleColour}[14]${endColour}${turquoiseColour} Test de estrés${endColour}
 
 
 ${purpleColour}[0]${endColour}${turquoiseColour} Volver atrás${endColour}
@@ -437,7 +437,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
     
     elif [[ $opcion2 = 5 ]]; then
         echo -e "
-        ${grayColour} Ataque sobre contraseñas${endColour}${greenColour}
+        ${grayColour} Crackeo de contraseñas${endColour}${greenColour}
 
 [1] acccheck				[19] Maskprocessor
 [2] Burp Suite				[20] multiforcer
@@ -664,7 +664,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         fi
     elif [[ $opcion2 = 7 ]]; then
         echo -e "
-        ${grayColour} Ataques a Aplicaciones Web${endColour}${greenColour}
+        ${grayColour} Ingeniería Inversa${endColour}${greenColour}
 
 [1] apktool
 [2] dex2jar
@@ -678,7 +678,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
 [10] Valgrind
 [11] YARA
 
-[0] Instalar todas las herramientas de WA
+[0] Instalar todas las herramientas de II
 [99] Volver atrás"
     echo -ne "${yellowColour}Elige una opción: ${endColour}"
         read opcion27
@@ -1045,6 +1045,93 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
+    elif [[ $opcion2 = 13 ]]; then
+        echo -e "
+        ${grayColour} Hacking Hardware${endColour}${greenColour}
+
+[1] android-sdk
+[2] apktool
+[3] Arduino
+[4] dex2jar
+[5] Sakis3G	
+[6] smali
+
+[0] Instalar todas las herramientas de Hacking Hardware
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion213
+        if [[ $opcion213 = 1 ]]; then
+            sudo apt install android-sdk
+        elif [[ $opcion213 = 2 ]]; then
+            sudo apt install apktool
+        elif [[ $opcion213 = 3 ]]; then
+            sudo apt install arduino
+        elif [[ $opcion213 = 4 ]]; then
+            sudo apt install dex2jar
+        elif [[ $opcion213 = 5 ]]; then
+            sudo apt install sakis3g
+        elif [[ $opcion213 = 6 ]]; then
+            sudo apt install smali
+        elif [[ $opcion213 = 0 ]]; then
+            sudo apt install -y android-sdk apktool arduino dex2jar sakis3g smali
+        elif [[ $opcion213 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+    elif [[ $opcion2 = 14 ]]; then
+        echo -e "
+        ${grayColour} Test de estrés${endColour}${greenColour}
+
+[1] DHCPig                              [8] Reaver
+[2] FunkLoad                            [9] rtpflood
+[3] iaxflood                            [10] SlowHTTPTest
+[4] Inundator                           [11] t50
+[5] inviteflood                         [12] Termineter
+[6] ipv6-toolkit                        [13] THC-IPV6
+[7] mdk3                                [14] THC-SSL-DOS
+
+[0] Instalar todas las herramientas de Estrés
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion214
+        if [[ $opcion214 = 1 ]]; then
+            sudo apt install dhcpig
+        elif [[ $opcion214 = 2 ]]; then
+            sudo apt install funkload
+        elif [[ $opcion214 = 3 ]]; then
+	        sudo apt install iaxflood
+        elif [[ $opcion214 = 4 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/inundator.git
+        elif [[ $opcion214 = 5 ]]; then
+            sudo apt install inviteflood
+        elif [[ $opcion214 = 6 ]]; then
+            sudo apt install ipv6-toolkit
+        elif [[ $opcion214 = 7 ]]; then
+            sudo apt install mdk3
+        elif [[ $opcion214 = 8 ]]; then
+            sudo apt install reaver
+        elif [[ $opcion214 = 9 ]]; then
+            sudo apt install rtpflood
+        elif [[ $opcion214 = 10 ]]; then
+            sudo apt install slowhttptest
+        elif [[ $opcion214 = 11 ]]; then
+            sudo apt install t50
+        elif [[ $opcion214 = 12 ]]; then
+            sudo apt install termineter
+        elif [[ $opcion214 = 13 ]]; then
+            sudo apt install thc-ipv6
+        elif [[ $opcion214 = 14 ]]; then
+            sudo apt install thc-ssl-dos
+        elif [[ $opcion214 = 0 ]]; then
+            sudo apt install -y dhcpig funkload iaxflood inviteflood ipv6-toolkit mdk3 reaver rtpflood slowhttptest t50 termineter thc-ipv6 thc-ssl-dos
+        elif [[ $opcion214 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
 
     elif [[ $opcion2 = 0 ]]; then
         Principal
@@ -1162,7 +1249,6 @@ while true; do
             sleep 0.5
         fi
     done
-
     while [[ $opcion = 2 ]]; do
         MenuGlogal2   
         if [[ $opciong2 = 1 ]]; then
