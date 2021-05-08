@@ -65,7 +65,7 @@ ${purpleColour}[1]${endColour}${turquoiseColour} Recopilación de Información${
 ${purpleColour}[2]${endColour}${turquoiseColour} Análisis de Vulnerabilidades${endColour}               ${purpleColour}[9]${endColour}${turquoiseColour} Sniffing & Spoofing${endColour}
 ${purpleColour}[3]${endColour}${turquoiseColour} Ataques a Redes Inalámbricas${endColour}               ${purpleColour}[10]${endColour}${turquoiseColour} Post Explotación${endColour}
 ${purpleColour}[4]${endColour}${turquoiseColour} Evaluación de Base de Datos${endColour}                ${purpleColour}[11]${endColour}${turquoiseColour} Análisis Forense${endColour}
-${purpleColour}[5]${endColour}${turquoiseColour} Ataques de contraseñas${endColour}                     ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
+${purpleColour}[5]${endColour}${turquoiseColour} Ataques sobre contraseñas${endColour}                  ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
 ${purpleColour}[6]${endColour}${turquoiseColour} Ataques a Aplicaciones Web${endColour}                 ${purpleColour}[13]${endColour}${turquoiseColour} Herramientas de Ingeniería Social${endColour}
 ${purpleColour}[7]${endColour}${turquoiseColour} Ingeniería Inversa${endColour}${purpleColour}                         ${purpleColour}[14]${endColour}${turquoiseColour} Servicios del Sistema${endColour}
 
@@ -279,7 +279,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         elif [[ $opcion22 = 8 ]]; then
             sudo apt install git && git clone https://github.com/stasinopoulos/commix.git commix && cd commix && python ./commix.py --install
         elif [[ $opcion22 = 9 ]]; then
-            echo 'download page : http://www.cqure.net/wp/tools/database/dbpwaudit/'
+            echo -e "${greenColour}Descarga inguma en : http://www.cqure.net/wp/tools/database/dbpwaudit/${endColour}"
         elif [[ $opcion22 = 10 ]]; then
             sudo apt install doona
         elif [[ $opcion22 = 11 ]]; then
@@ -291,7 +291,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         elif [[ $opcion22 = 14 ]]; then
             sudo apt install hexorbase
         elif [[ $opcion22 = 15 ]]; then
-            echo -e "${greenColour}Please download inguma from : http://inguma.sourceforge.net${endColour}"
+            echo -e "${greenColour}Descarga inguma en : http://inguma.sourceforge.net${endColour}"
         elif [[ $opcion22 = 16 ]]; then
             sudo apt install jsql
         elif [[ $opcion22 = 17 ]]; then
@@ -435,6 +435,113 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
     
+    elif [[ $opcion2 = 5 ]]; then
+        echo -e "
+        ${grayColour} Ataque sobre contraseñas${endColour}${greenColour}
+
+[1] acccheck				[19] Maskprocessor
+[2] Burp Suite				[20] multiforcer
+[3] CeWL				[21] Ncrack
+[4] chntpw				[22] oclgausscrack
+[5] cisco-auditing-tool			[23] PACK
+[6] CmosPwd				[24] patator
+[7] creddump				[25] phrasendrescher
+[8] crunch				[26] polenum
+[9] DBPwAudit				[27] RainbowCrack
+[10] findmyhash				[28] rcracki-mt
+[11] gpp-decrypt			[29] RSMangler
+[12] hash-identifier			[30] SQLdict
+[13] HexorBase				[31] Statsprocessor
+[14] THC-Hydra				[32] THC-pptp-bruter
+[15] John the Ripper			[33] TrueCrack
+[16] Johnny				[34] WebScarab 
+[17] keimpx				[35] wordlists 
+[18] Maltego Teeth			[36] zaproxy 
+
+[0] Instalar todas las herramientas de PA
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion25
+        if [[ $opcion25 = 1 ]]; then
+            sudo apt install acccheck
+        elif [[ $opcion25 = 2 ]]; then
+            sudo apt install burpsuite
+        elif [[ $opcion25 = 3 ]]; then
+            sudo apt install cewl
+        elif [[ $opcion25 = 4 ]]; then
+            sudo apt install chntpw
+        elif [[ $opcion25 = 5 ]]; then
+            sudo apt install cisco-auditing-tool
+        elif [[ $opcion25 = 6 ]]; then
+            sudo apt install cmospwd
+        elif [[ $opcion25 = 7 ]]; then
+            sudo apt install creddump
+        elif [[ $opcion25 = 8 ]]; then
+            sudo apt install crunch
+        elif [[ $opcion25 = 9 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/dbpwaudit.git
+        elif [[ $opcion25 = 10 ]]; then
+            sudo apt install findmyhash
+        elif [[ $opcion25 = 11 ]]; then
+            sudo apt install gpp-decrypt
+        elif [[ $opcion25 = 12 ]]; then
+            sudo apt install hash-identifier
+        elif [[ $opcion25 = 13 ]]; then
+            sudo apt install hexorbase
+        elif [[ $opcion25 = 14 ]]; then
+            sudo apt install hydra
+        elif [[ $opcion25 = 15 ]]; then
+            sudo apt install john
+        elif [[ $opcion25 = 16 ]]; then
+            sudo apt install johnny
+        elif [[ $opcion25 = 17 ]]; then
+            sudo apt install keimpx
+        elif [[ $opcion25 = 18 ]]; then
+            sudo apt install maltego-teeth
+        elif [[ $opcion25 = 19 ]]; then
+            sudo apt install maskprocessor
+        elif [[ $opcion25 = 20 ]]; then
+            sudo apt install multiforcer
+        elif [[ $opcion25 = 21 ]]; then
+            sudo apt install ncrack
+        elif [[ $opcion25 = 22 ]]; then
+            sudo apt install oclgausscrack
+        elif [[ $opcion25 = 23 ]]; then
+            sudo apt install pack
+        elif [[ $opcion25 = 24 ]]; then
+            sudo apt install patator
+        elif [[ $opcion25 = 25 ]]; then
+            echo -e "${greenColour}Descarga phrasendrescher en : https://www.leidecker.info/projects/phrasendrescher/index.shtml${endColour}" 
+        elif [[ $opcion25 = 26 ]]; then
+            sudo apt install polenum
+        elif [[ $opcion25 = 27 ]]; then
+            sudo apt install rainbowcrack
+        elif [[ $opcion25 = 28 ]]; then
+            sudo apt install rcracki-mt
+        elif [[ $opcion25 = 29 ]]; then
+            sudo apt install rsmangler
+        elif [[ $opcion25 = 30 ]]; then
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Sqldict no se puede descargar${endColour}${redColour} [!]${endColour}" 
+        elif [[ $opcion25 = 31 ]]; then
+            sudo apt install statsprocessor
+        elif [[ $opcion25 = 32 ]]; then
+            sudo apt install thc-pptp-bruter
+        elif [[ $opcion25 = 33 ]]; then
+            sudo apt install truecrack
+        elif [[ $opcion25 = 34 ]]; then
+            sudo apt install webscarab
+        elif [[ $opcion25 = 35 ]]; then
+            sudo apt install wordlists
+        elif [[ $opcion25 = 36 ]]; then
+            sudo apt install zaproxy
+        elif [[ $opcion25 = 0 ]]; then
+            sudo apt install 
+        elif [[ $opcion25 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
     elif [[ $opcion2 = 0 ]]; then
         Principal
     fi
@@ -514,16 +621,6 @@ function BorrarRepositorios(){
         echo -e "\n${yellowColour}[*]${endColour}${greenColour} El comando se ejecutó correctamente${endColour}\n"
     else
         echo -e "\n${redColour}[!]${endColour}${lightRed} No se pudo completar la ejecución del comando ${endColour}${redColour}[!]${endColour}\n"
-    fi
-}
-
-function Caso2(){
-    MenuGlogal2   
-    if [[ $opciong2 = 1 ]]; then
-        MenuOpcion21
-    elif [[ $opciong2 = 4 ]]; then
-        sleep 0.5
-        Principal
     fi
 }
 
