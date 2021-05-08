@@ -926,6 +926,125 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
+    elif [[ $opcion2 = 11 ]]; then
+        echo -e "
+        ${grayColour} Análisis Forense${endColour}${greenColour}
+
+[1] Binwalk                             [13] Galleta
+[2] bulk-extractor                      [14] Guymager
+[3] Capstone                            [15] iPhone Backup Analyzer
+[4] chntpw                              [16] p0f
+[5] Cuckoo                              [17] pdf-parser
+[6] dc3dd                               [18] pdfid
+[7] ddrescue                            [19] pdgmail
+[8] DFF                                 [20] peepdf
+[9] diStorm3                            [21] RegRipper
+[10] Dumpzilla                          [22] Volatility
+[11] extundelete                        [23] Xplico
+[12] Foremost
+
+[0] Instalar todas las herramientas de AF
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion211
+        if [[ $opcion211 = 1 ]]; then
+            sudo apt install binwalk
+        elif [[ $opcion211 = 2 ]]; then
+            sudo apt install bulk-extractor
+        elif [[ $opcion211 = 3 ]]; then
+	        sudo apt install git && git clone git://git.kali.org/packages/capstone.git
+        elif [[ $opcion211 = 4 ]]; then
+            sudo apt install chntpw
+        elif [[ $opcion211 = 5 ]]; then
+            sudo apt install cuckoo
+        elif [[ $opcion211 = 6 ]]; then
+            sudo apt install dc3dd
+        elif [[ $opcion211 = 7 ]]; then
+            sudo apt install ddrescue
+        elif [[ $opcion211 = 8 ]]; then
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Dff no se puede descargar${endColour}${redColour} [!]${endColour}"
+        elif [[ $opcion211 = 9 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/distorm3.git
+        elif [[ $opcion211 = 10 ]]; then
+            sudo apt install dumpzilla
+        elif [[ $opcion211 = 11 ]]; then
+            sudo apt install extundelete
+        elif [[ $opcion211 = 12 ]]; then
+            sudo apt install foremost
+        elif [[ $opcion211 = 13 ]]; then
+            sudo apt install galleta
+        elif [[ $opcion211 = 14 ]]; then
+            sudo apt install guymager
+        elif [[ $opcion211 = 15 ]]; then
+            sudo apt install iphone-backup-analyzer
+        elif [[ $opcion211 = 16 ]]; then
+            sudo apt install p0f
+        elif [[ $opcion211 = 17 ]]; then
+            sudo apt install pdf-parser
+        elif [[ $opcion211 = 18 ]]; then
+            sudo apt install pdfid
+        elif [[ $opcion211 = 19 ]]; then
+            sudo apt install pdgmail
+        elif [[ $opcion211 = 20 ]]; then
+            sudo apt install peepdf
+        elif [[ $opcion211 = 21 ]]; then
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Regripper no se puede descargar${endColour}${redColour} [!]${endColour}" 
+        elif [[ $opcion211 = 22 ]]; then
+            sudo apt install volatility
+        elif [[ $opcion211 = 23 ]]; then
+            sudo apt install xplico
+        elif [[ $opcion211 = 0 ]]; then
+            sudo apt install -y binwalk bulk-extractor chntpw cuckoo dc3dd ddrescue dumpzilla extundelete foremost galleta guymager iphone-backup-analyzer p0f pdf-parser pdfid pdgmail peepdf volatility xplico
+        elif [[ $opcion211 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+    elif [[ $opcion2 = 12 ]]; then
+        echo -e "
+        ${grayColour} Herramientas de Reporte${endColour}${greenColour}
+
+[1] CaseFile
+[2] CutyCapt
+[3] dos2unix
+[4] Dradis
+[5] KeepNote	
+[6] MagicTree
+[7] Metagoofil
+[8] Nipper-ng
+[9] pipal
+
+[0] Instalar todas las herramientas de Reporte
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion212
+        if [[ $opcion212 = 1 ]]; then
+            sudo apt install casefile
+        elif [[ $opcion212 = 2 ]]; then
+            sudo apt install cutycapt
+        elif [[ $opcion212 = 3 ]]; then
+            sudo apt install dos2unix
+        elif [[ $opcion212 = 4 ]]; then
+            sudo apt install dradis
+        elif [[ $opcion212 = 5 ]]; then
+            sudo apt install keepnote
+        elif [[ $opcion212 = 6 ]]; then
+            sudo apt install magictree
+        elif [[ $opcion212 = 7 ]]; then
+            sudo apt install metagoofil
+        elif [[ $opcion212 = 8 ]]; then
+            sudo apt install nipper-ng
+        elif [[ $opcion212 = 9 ]]; then
+            sudo apt install pipal
+        elif [[ $opcion212 = 0 ]]; then
+            sudo apt install -y casefile cutycapt dos2unix dradis keepnote magictree metagoofil nipper-ng pipal
+        elif [[ $opcion212 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
 
     elif [[ $opcion2 = 0 ]]; then
         Principal
