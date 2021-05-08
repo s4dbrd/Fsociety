@@ -67,10 +67,10 @@ function MenuOpcion21(){
     echo -e "
 ${purpleColour}[1]${endColour}${turquoiseColour} Recopilación de Información${endColour}                ${purpleColour}[8]${endColour}${turquoiseColour} Herramientas de Explotación${endColour}
 ${purpleColour}[2]${endColour}${turquoiseColour} Análisis de Vulnerabilidades${endColour}               ${purpleColour}[9]${endColour}${turquoiseColour} Sniffing & Spoofing${endColour}
-${purpleColour}[3]${endColour}${turquoiseColour} Ataque a Redes Inalámbricas${endColour}               ${purpleColour}[10]${endColour}${turquoiseColour} Post Explotación${endColour}
+${purpleColour}[3]${endColour}${turquoiseColour} Ataques a Redes Inalámbricas${endColour}               ${purpleColour}[10]${endColour}${turquoiseColour} Post Explotación${endColour}
 ${purpleColour}[4]${endColour}${turquoiseColour} Evaluación de Base de Datos${endColour}                ${purpleColour}[11]${endColour}${turquoiseColour} Análisis Forense${endColour}
 ${purpleColour}[5]${endColour}${turquoiseColour} Ataques de contraseñas${endColour}                     ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
-${purpleColour}[6]${endColour}${turquoiseColour} Ataques Wireless${endColour}                           ${purpleColour}[13]${endColour}${turquoiseColour} Herramientas de Ingeniería Social${endColour}
+${purpleColour}[6]${endColour}${turquoiseColour} Ataques a Aplicaciones Web${endColour}                           ${purpleColour}[13]${endColour}${turquoiseColour} Herramientas de Ingeniería Social${endColour}
 ${purpleColour}[7]${endColour}${turquoiseColour} Ingeniería Inversa${endColour}${purpleColour}                         ${purpleColour}[14]${endColour}${turquoiseColour} Servicios del Sistema${endColour}
 
 
@@ -367,7 +367,77 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
 [0] Instalar todas las herramientas de WA
 [99] Volver atrás"
     echo -ne "${yellowColour}Elige una opción: ${endColour}"
-        read opcion22
+        read opcion23
+        if [[ $opcion23 = 1 ]]; then
+            sudo apt install aircrack-ng
+        elif [[ $opcion23 = 2 ]]; then
+            sudo apt install asleap
+        elif [[ $opcion23 = 3 ]]; then
+            sudo apt install bluelog
+        elif [[ $opcion23 = 4 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/bluemaho.git
+        elif [[ $opcion23 = 5 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/bluepot.git
+        elif [[ $opcion23 = 6 ]]; then
+            sudo apt install blueranger
+        elif [[ $opcion23 = 7 ]]; then
+            sudo apt install bluesnarfer
+        elif [[ $opcion23 = 8 ]]; then
+            sudo apt install bully
+        elif [[ $opcion23 = 9 ]]; then
+            sudo apt install cowpatty
+        elif [[ $opcion23 = 10 ]]; then
+            sudo apt install crackle
+        elif [[ $opcion23 = 11 ]]; then
+            sudo apt install eapmd5pass
+        elif [[ $opcion23 = 12 ]]; then
+            sudo apt install fern-wifi-cracker
+        elif [[ $opcion23 = 13 ]]; then
+            sudo apt install ghost-phisher
+        elif [[ $opcion23 = 14 ]]; then
+            sudo apt install giskismet
+        elif [[ $opcion23 = 15 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/gr-scan.git
+        elif [[ $opcion23 = 16 ]]; then
+            sudo apt install kalibrate-rtl
+        elif [[ $opcion23 = 17 ]]; then
+            sudo apt install killerbee
+        elif [[ $opcion23 = 18 ]]; then
+            sudo apt install kismet
+        elif [[ $opcion23 = 19 ]]; then
+            sudo apt install mdk3
+        elif [[ $opcion23 = 20 ]]; then
+            sudo apt install mfcuk
+        elif [[ $opcion23 = 21 ]]; then
+            sudo apt install mfoc
+        elif [[ $opcion23 = 22 ]]; then
+            sudo apt install mfterm
+        elif [[ $opcion23 = 23 ]]; then
+            sudo apt install multimon-ng
+        elif [[ $opcion23 = 24 ]]; then
+            sudo apt install pixiewps
+        elif [[ $opcion23 = 25 ]]; then
+            sudo apt install reaver
+        elif [[ $opcion23 = 26 ]]; then
+            sudo apt install redfang
+        elif [[ $opcion23 = 27 ]]; then
+            sudo apt install rtlsdr-scanner
+        elif [[ $opcion23 = 28 ]]; then
+            sudo apt install spooftooph
+        elif [[ $opcion23 = 29 ]]; then
+            sudo apt install wifi-honey
+        elif [[ $opcion23 = 30 ]]; then
+            sudo apt install wifitap
+        elif [[ $opcion23 = 31 ]]; then
+            sudo apt install wifite
+        elif [[ $opcion23 = 0 ]]; then
+            sudo apt install -y aircrack-ng asleap bluelog blueranger bluesnarfer bully cowpatty crackle eapmd5pass fern-wifi-cracker ghost-phisher giskismet gqrx kalibrate-rtl killerbee kismet mdk3 mfcuk mfoc mfterm multimon-ng pixiewps reaver redfang spooftooph wifi-honey wifitap wifite
+        elif [[ $opcion23 = 99 ]]; then
+            sleep 0.5
+            Principal
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
     
     elif [[ $opcion2 = 0 ]]; then
         Principal
