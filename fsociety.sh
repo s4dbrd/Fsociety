@@ -535,7 +535,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         elif [[ $opcion25 = 36 ]]; then
             sudo apt install zaproxy
         elif [[ $opcion25 = 0 ]]; then
-            sudo apt install 
+            sudo apt install -y acccheck burpsuite cewl chntpw cisco-auditing-tool cmospwd creddump crunch findmyhash gpp-decrypt hash-identifier hexorbase john johnny keimpx maltego-teeth maskprocessor multiforcer ncrack oclgausscrack pack patator polenum rainbowcrack rcracki-mt rsmangler statsprocessor thc-pptp-bruter truecrack webscarab wordlists zaproxy
         elif [[ $opcion25 = 99 ]]; then
             sleep 0.5
             MenuOpcion21
