@@ -65,7 +65,7 @@ ${purpleColour}[1]${endColour}${turquoiseColour} Recopilación de Información${
 ${purpleColour}[2]${endColour}${turquoiseColour} Análisis de Vulnerabilidades${endColour}               ${purpleColour}[9]${endColour}${turquoiseColour} Sniffing & Spoofing${endColour}
 ${purpleColour}[3]${endColour}${turquoiseColour} Ataques a Redes Inalámbricas${endColour}               ${purpleColour}[10]${endColour}${turquoiseColour} Post Explotación${endColour}
 ${purpleColour}[4]${endColour}${turquoiseColour} Evaluación de Base de Datos${endColour}                ${purpleColour}[11]${endColour}${turquoiseColour} Análisis Forense${endColour}
-${purpleColour}[5]${endColour}${turquoiseColour} Ataques sobre contraseñas${endColour}                  ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
+${purpleColour}[5]${endColour}${turquoiseColour} Ataques a contraseñas${endColour}                      ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
 ${purpleColour}[6]${endColour}${turquoiseColour} Ataques a Aplicaciones Web${endColour}                 ${purpleColour}[13]${endColour}${turquoiseColour} Herramientas de Ingeniería Social${endColour}
 ${purpleColour}[7]${endColour}${turquoiseColour} Ingeniería Inversa${endColour}${purpleColour}                         ${purpleColour}[14]${endColour}${turquoiseColour} Servicios del Sistema${endColour}
 
@@ -521,7 +521,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         elif [[ $opcion25 = 29 ]]; then
             sudo apt install rsmangler
         elif [[ $opcion25 = 30 ]]; then
-            echo -e "\n${redColour}[!]${endColour}${lightRed} Sqldict no se puede descargar${endColour}${redColour} [!]${endColour}" 
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Sqldict no se puede descargar${endColour}${redColour} [!]${endColour}"
         elif [[ $opcion25 = 31 ]]; then
             sudo apt install statsprocessor
         elif [[ $opcion25 = 32 ]]; then
@@ -537,6 +537,126 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         elif [[ $opcion25 = 0 ]]; then
             sudo apt install -y acccheck burpsuite cewl chntpw cisco-auditing-tool cmospwd creddump crunch findmyhash gpp-decrypt hash-identifier hexorbase john johnny keimpx maltego-teeth maskprocessor multiforcer ncrack oclgausscrack pack patator polenum rainbowcrack rcracki-mt rsmangler statsprocessor thc-pptp-bruter truecrack webscarab wordlists zaproxy
         elif [[ $opcion25 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+    elif [[ $opcion2 = 6 ]]; then
+        echo -e "
+        ${grayColour} Ataques a Aplicaciones Web${endColour}${greenColour}
+
+[1] apache-users			[21] Parsero
+[2] Arachni				[22] plecost
+[3] BBQSQL				[23] Powerfuzzer
+[4] BlindElephant			[24] ProxyStrike
+[5] Burp Suite				[25] Recon-ng
+[6] commix				[26] Skipfish
+[7] CutyCapt				[27] sqlmap
+[8] DAVTest				[28] Sqlninja
+[9] deblaze				[29] sqlsus
+[10] DIRB				[30] ua-tester
+[11] DirBuster				[31] Uniscan
+[12] fimap				[32] Vega
+[13] FunkLoad				[33] w3af
+[14] Grabber				[34] WebScarab
+[15] jboss-autopwn			[35] Webshag
+[16] joomscan				[36] WebSlayer
+[17] jSQL				[37] WebSploit
+[18] Maltego Teeth			[38] Wfuzz
+[19] PadBuster				[39] WPScan
+[20] Paros				[40] XSSer
+					[41] zaproxy
+
+[0] Instalar todas las herramientas de PA
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion26
+        if [[ $opcion26 = 1 ]]; then
+            sudo apt install apache-users
+        elif [[ $opcion26 = 2 ]]; then
+            sudo apt install arachni
+        elif [[ $opcion26 = 3 ]]; then
+            sudo apt install bbqsql
+        elif [[ $opcion26 = 4 ]]; then
+            sudo apt install blindelephant
+        elif [[ $opcion26 = 5 ]]; then
+            sudo apt install burpsuite
+        elif [[ $opcion26 = 6 ]]; then
+            sudo apt install cutycapt
+        elif [[ $opcion26 = 7 ]]; then
+            sudo apt install git && git clone https://github.com/stasinopoulos/commix.git commix && cd commix && python ./commix.py --install
+        elif [[ $opcion26 = 8 ]]; then
+            sudo apt install davtest
+        elif [[ $opcion26 = 9 ]]; then
+            sudo apt install deblaze
+        elif [[ $opcion26 = 10 ]]; then
+            sudo apt install dirb
+        elif [[ $opcion26 = 11 ]]; then
+            sudo apt install dirbuster
+        elif [[ $opcion26 = 12 ]]; then
+            sudo apt install fimap
+        elif [[ $opcion26 = 13 ]]; then
+            sudo apt install funkload
+        elif [[ $opcion26 = 14 ]]; then
+            sudo apt install grabber
+        elif [[ $opcion26 = 15 ]]; then
+            sudo apt install jboss-autopwn
+        elif [[ $opcion26 = 16 ]]; then
+            sudo apt install joomscan
+        elif [[ $opcion26 = 17 ]]; then
+            sudo apt install jsql
+        elif [[ $opcion26 = 18 ]]; then
+            sudo apt install maltego-teeth
+        elif [[ $opcion26 = 19 ]]; then
+            sudo apt install padbuster
+        elif [[ $opcion26 = 20 ]]; then
+            sudo apt install paros
+        elif [[ $opcion26 = 21 ]]; then
+            sudo apt install parsero
+        elif [[ $opcion26 = 22 ]]; then
+            sudo apt install plecost
+        elif [[ $opcion26 = 23 ]]; then
+            sudo apt install powerfuzzer
+        elif [[ $opcion26 = 24 ]]; then
+            sudo apt install proxystrike
+        elif [[ $opcion26 = 25 ]]; then
+            sudo apt install recon-ng
+        elif [[ $opcion26 = 26 ]]; then
+            sudo apt install skipfish
+        elif [[ $opcion26 = 27 ]]; then
+            sudo apt install sqlmap
+        elif [[ $opcion26 = 28 ]]; then
+            sudo apt install sqlninja
+        elif [[ $opcion26 = 29 ]]; then
+            sudo apt install sqlsus
+        elif [[ $opcion26 = 30 ]]; then
+            sudo apt install ua-tester
+        elif [[ $opcion26 = 31 ]]; then
+            sudo apt install uniscan
+        elif [[ $opcion26 = 32 ]]; then
+            sudo apt install vega
+        elif [[ $opcion26 = 33 ]]; then
+            sudo apt install w3af
+        elif [[ $opcion26 = 34 ]]; then
+            sudo apt install webscarab
+        elif [[ $opcion26 = 35 ]]; then
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Webshang no se puede descargar${endColour}${redColour} [!]${endColour}"
+        elif [[ $opcion26 = 36 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/webslayer.git
+        elif [[ $opcion26 = 37 ]]; then
+            sudo apt install websploit
+        elif [[ $opcion26 = 38 ]]; then
+            sudo apt install wfuzz
+        elif [[ $opcion26 = 39 ]]; then
+            sudo apt install wpscan
+        elif [[ $opcion26 = 40 ]]; then
+            sudo apt install xsser
+        elif [[ $opcion26 = 41 ]]; then
+            sudo apt install zaproxy
+        elif [[ $opcion26 = 0 ]]; then
+            sudo apt install -y apache-users arachni bbqsql blindelephant burpsuite cutycapt davtest deblaze dirb dirbuster fimap funkload grabber jboss-autopwn joomscan jsql maltego-teeth padbuster paros parsero plecost powerfuzzer proxystrike recon-ng skipfish sqlmap sqlninja sqlsus ua-tester uniscan vega w3af webscarab websploit wfuzz wpscan xsser zaproxy
+        elif [[ $opcion26 = 99 ]]; then
             sleep 0.5
             MenuOpcion21
         else
@@ -568,11 +688,24 @@ function Actualizar(){
             echo -ne "\n${yellowColour}[*]${endColour}${blueColour} ¿Tienes todos los paquetes actualizados?${endColour}${yellowColour} [S/N]: ${endColour}"
             read option
             if [[ $option = [Ss] ]]; then
-                return 0
+                echo -e "\n${yellowColour}[*]${endColour}${grayColour} Siguiendo con la actualización...${endColour}\n"
             else
                 echo -e "\n${yellowColour}[*]${endColour}${grayColour} Upgradeando sistema...${endColour}\n"
                 sleep 0.5
                 sudo apt upgrade -y 2>/dev/null
+            fi
+            echo -ne "\n${yellowColour}[*]${endColour}${blueColour} ¿Ha ocurrido algún error con la clave pública?${endColour}${yellowColour} [S/N]: ${endColour}"
+            read keyoption
+            if [[ $keyoption = [Ss] ]]; then
+                echo -e "\n${yellowColour}[*]${endColour}${grayColour} Añadiendo clave pública...${endColour}\n"
+                sleep 0.5
+                echo -e "\n${yellowColour}[*]${endColour}${grayColour} Instalando programas necesarios${endColour}\n"
+                sleep 0.5
+                sudo apt install -y gnupg2
+                wget -q -O - https://archive.kali.org/archive-key.asc  | apt-key add
+                return 0
+            else
+                sleep 0.5
                 return 0
             fi
         done
@@ -610,7 +743,7 @@ function VerRepositorios(){
     sed -i '/^$/d' /etc/apt/sources.list
     sed 's/  */&,/g' /etc/apt/sources.list| \
 awk -v r=$awkGRAY -v g=$awkGREEN -v p=$awkPURPLE \
- '{printf p$1n r$2n g$3n"\n"}' FS=","
+ '{printf p$1n r$2n g$3n g$4n g$5n g$6n"\n"}' FS=","
 }
 
 function BorrarRepositorios(){
