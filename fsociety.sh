@@ -772,6 +772,161 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
+    elif [[ $opcion2 = 9 ]]; then
+        echo -e "
+        ${grayColour} Sniffing & Spoofing${endColour}${greenColour}
+
+[1] Burp Suite				[17] rtpmixsound
+[2] DNSChef				[18] sctpscan
+[3] fiked				[19] SIPArmyKnife
+[4] hamster-sidejack			[20] SIPp
+[5] HexInject				[21] SIPVicious
+[6] iaxflood				[22] SniffJoke
+[7] inviteflood				[23] SSLsplit
+[8] iSMTP				[24] sslstrip
+[9] isr-evilgrade			[25] THC-IPV6
+[10] mitmproxy				[26] VoIPHopper
+[11] ohrwurm				[27] WebScarab
+[12] protos-sip				[28] Wifi Honey
+[13] rebind				[29] Wireshark
+[14] responder				[30] xspy
+[15] rtpbreak				[31] Yersinia
+[16] rtpinsertsound			[32] zaproxy 
+
+[0] Instalar todas las herramientas de Sniffing
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion29
+        if [[ $opcion29 = 1 ]]; then
+            sudo apt install burpsuite
+        elif [[ $opcion29 = 2 ]]; then
+            sudo apt install dnschef
+        elif [[ $opcion29 = 3 ]]; then
+	        sudo apt install fiked
+        elif [[ $opcion29 = 4 ]]; then
+            sudo apt install hamster-sidejack
+        elif [[ $opcion29 = 5 ]]; then
+            sudo apt install hexinject
+        elif [[ $opcion29 = 6 ]]; then
+            sudo apt install iaxflood
+        elif [[ $opcion29 = 7 ]]; then
+            sudo apt install inviteflood
+        elif [[ $opcion29 = 8 ]]; then
+            sudo apt install ismtp
+        elif [[ $opcion29 = 9 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/isr-evilgrade.git
+        elif [[ $opcion29 = 10 ]]; then
+            sudo apt install mitmproxy
+        elif [[ $opcion29 = 11 ]]; then
+            sudo apt install ohrwurm
+        elif [[ $opcion29 = 12 ]]; then
+            sudo apt install protos-sip
+        elif [[ $opcion29 = 13 ]]; then
+            sudo apt install rebind
+        elif [[ $opcion29 = 14 ]]; then
+            sudo apt install responder
+        elif [[ $opcion29 = 15 ]]; then
+            sudo apt install rtpbreak
+        elif [[ $opcion29 = 16 ]]; then
+            sudo apt install rtpinsertsound
+        elif [[ $opcion29 = 17 ]]; then
+            sudo apt install rtpmixsound
+        elif [[ $opcion29 = 18 ]]; then
+            sudo apt install sctpscan
+        elif [[ $opcion29 = 19 ]]; then
+            sudo apt install siparmyknife
+        elif [[ $opcion29 = 20 ]]; then
+            sudo apt install sipp
+        elif [[ $opcion29 = 21 ]]; then
+            sudo apt install sipvicious
+        elif [[ $opcion29 = 22 ]]; then
+            sudo apt install sniffjoke
+        elif [[ $opcion29 = 23 ]]; then
+            sudo apt install sslsplit
+        elif [[ $opcion29 = 24 ]]; then
+            sudo apt install sslstrip
+        elif [[ $opcion29 = 25 ]]; then
+            sudo apt install thc-ipv6
+        elif [[ $opcion29 = 26 ]]; then
+            sudo apt install voiphopper
+        elif [[ $opcion29 = 27 ]]; then
+            sudo apt install webscarab
+        elif [[ $opcion29 = 28 ]]; then
+            sudo apt install wifi-honey
+        elif [[ $opcion29 = 29 ]]; then
+            sudo apt install wireshark
+        elif [[ $opcion29 = 30 ]]; then
+            sudo apt install xspy
+        elif [[ $opcion29 = 31 ]]; then
+            sudo apt install yersinia
+        elif [[ $opcion29 = 32 ]]; then
+            sudo apt install zaproxy
+        elif [[ $opcion29 = 0 ]]; then
+            sudo apt install -y burpsuite dnschef fiked hamster-sidejack hexinject iaxflood inviteflood ismtp mitmproxy ohrwurm protos-sip rebind responder rtpbreak rtpinsertsound rtpmixsound sctpscan siparmyknife sipp sipvicious sniffjoke sslsplit sslstrip thc-ipv6 voiphopper webscarab wifi-honey wireshark xspy yersinia zaproxy
+        elif [[ $opcion29 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+    elif [[ $opcion2 = 10 ]]; then
+        echo -e "
+        ${grayColour} Post Explotación${endColour}${greenColour}
+
+[1] CryptCat				[9] polenum
+[2] Cymothoa				[10] PowerSploit
+[3] dbd				        [11] pwnat
+[4] dns2tcp			        [12] RidEnum
+[5] http-tunnel				[13] sbd
+[6] HTTPTunnel				[14] U3-Pwn
+[7] Intersect				[15] Webshells
+[8] Nishang				[16] Weevely
+
+[0] Instalar todas las herramientas de PE
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion210
+        if [[ $opcion210 = 1 ]]; then
+            sudo apt install cryptcat
+        elif [[ $opcion210 = 2 ]]; then
+            sudo apt install cymothoa
+        elif [[ $opcion210 = 3 ]]; then
+            sudo apt install dbd
+        elif [[ $opcion210 = 4 ]]; then
+            sudo apt install dns2tcp
+        elif [[ $opcion210 = 5 ]]; then
+            sudo apt install http-tunnel
+        elif [[ $opcion210 = 6 ]]; then
+            sudo apt install httptunnel
+        elif [[ $opcion210 = 7 ]]; then
+            sudo apt install intersect
+        elif [[ $opcion210 = 8 ]]; then
+            sudo apt install nishang
+        elif [[ $opcion210 = 9 ]]; then
+            sudo apt install polenum
+        elif [[ $opcion210 = 10 ]]; then
+            sudo apt install powersploit
+        elif [[ $opcion210 = 11 ]]; then
+            sudo apt install pwnat
+        elif [[ $opcion210 = 12 ]]; then
+            sudo apt install ridenum
+        elif [[ $opcion210 = 13 ]]; then
+            sudo apt install sbd
+        elif [[ $opcion210 = 14 ]]; then
+            sudo apt install u3-pwn
+        elif [[ $opcion210 = 15 ]]; then
+            sudo apt install webshells
+        elif [[ $opcion210 = 16 ]]; then
+            sudo apt install weevely
+        elif [[ $opcion210 = 0 ]]; then
+            sudo apt install -y cryptcat cymothoa dbd dns2tcp http-tunnel httptunnel intersect nishang polenum powersploit pwnat ridenum sbd u3-pwn webshells weevely
+        elif [[ $opcion210 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+
     elif [[ $opcion2 = 0 ]]; then
         Principal
     fi
