@@ -67,12 +67,14 @@ function MenuOpcion21(){
     echo -e "
 ${purpleColour}[1]${endColour}${turquoiseColour} Recopilación de Información${endColour}                ${purpleColour}[8]${endColour}${turquoiseColour} Herramientas de Explotación${endColour}
 ${purpleColour}[2]${endColour}${turquoiseColour} Análisis de Vulnerabilidades${endColour}               ${purpleColour}[9]${endColour}${turquoiseColour} Sniffing & Spoofing${endColour}
-${purpleColour}[3]${endColour}${turquoiseColour} Análisis de Aplicaciones Web${endColour}               ${purpleColour}[10]${endColour}${turquoiseColour} Post Explotación${endColour}
+${purpleColour}[3]${endColour}${turquoiseColour} Ataque a Redes Inalámbricas${endColour}               ${purpleColour}[10]${endColour}${turquoiseColour} Post Explotación${endColour}
 ${purpleColour}[4]${endColour}${turquoiseColour} Evaluación de Base de Datos${endColour}                ${purpleColour}[11]${endColour}${turquoiseColour} Análisis Forense${endColour}
 ${purpleColour}[5]${endColour}${turquoiseColour} Ataques de contraseñas${endColour}                     ${purpleColour}[12]${endColour}${turquoiseColour} Herramientas de Reporte${endColour}
 ${purpleColour}[6]${endColour}${turquoiseColour} Ataques Wireless${endColour}                           ${purpleColour}[13]${endColour}${turquoiseColour} Herramientas de Ingeniería Social${endColour}
 ${purpleColour}[7]${endColour}${turquoiseColour} Ingeniería Inversa${endColour}${purpleColour}                         ${purpleColour}[14]${endColour}${turquoiseColour} Servicios del Sistema${endColour}
-                                                                                                        ${purpleColour}[15]${endColour}${turquoiseColour} Volver atrás${endColour}
+
+
+${purpleColour}[0]${endColour}${turquoiseColour} Volver atrás${endColour}
 "
     echo -ne "${yellowColour}Elige una opción: ${endColour}"
     read opcion2
@@ -80,15 +82,15 @@ ${purpleColour}[7]${endColour}${turquoiseColour} Ingeniería Inversa${endColour}
         echo -e "
 ${grayColour} Recopilación de Información${endColour}${greenColour}
 
- [1] acccheck					[30] lbd
- [2] ace-voip					[31] Maltego Teeth
- [3] Amap					[32] masscan
- [4] Automater					[33] Metagoofil
- [5] bing-ip2hosts				[34] Miranda
- [6] braa					[35] Nmap
- [7] CaseFile					[36] ntop
- [8] CDPSnarf					[37] p0f
- [9] cisco-torch				[38] Parsero
+[1] acccheck					[30] lbd
+[2] ace-voip					[31] Maltego Teeth
+[3] Amap					[32] masscan
+[4] Automater					[33] Metagoofil
+[5] bing-ip2hosts				[34] Miranda
+[6] braa					[35] Nmap
+[7] CaseFile					[36] ntop
+[8] CDPSnarf					[37] p0f
+[9] cisco-torch				[38] Parsero
 [10] Cookie Cadger				[39] Recon-ng
 [11] copy-router-config			        [40] SET
 [12] DMitry					[41] smtp-user-enum
@@ -111,7 +113,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
 [29] goofile
 
 [0] Instalar todas las herramientas de RI
-				 
+[99] Volver atrás				 
 						"
         echo -ne "${yellowColour}Elige una opción: ${endColour}"
         read opcion21
@@ -229,10 +231,14 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
             sudo apt install intrace
         elif [[ $opcion21 = 57 ]]; then
             sudo apt install hping3
+        elif [[ $opcion21 = 99 ]]; then
+            Principal
         elif [[ $opcion21 = 0 ]]; then
             sudo apt install -y acccheck ace-voip amap automater braa casefile cdpsnarf cisco-torch cookie-cadger copy-router-config dmitry dnmap dnsenum dnsmap dnsrecon dnstracer dnswalk dotdotpwn enum4linux enumiax exploitdb fierce firewalk fragroute fragrouter ghost-phisher golismero goofile lbd maltego-teeth masscan metagoofil miranda nmap p0f parsero recon-ng set smtp-user-enum snmpcheck sslcaudit sslsplit sslstrip sslyze thc-ipv6 theharvester tlssled twofi urlcrazy wireshark wol-e xplico ismtp intrace hping3 && wget http://www.morningstarsecurity.com/downloads/bing-ip2hosts-0.4.tar.gz && tar -xzvf bing-ip2hosts-0.4.tar.gz && cp bing-ip2hosts-0.4/bing-ip2hosts /usr/local/bin/
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
-    elif [[ $opcion2=2 ]]; then
+    elif [[ $opcion2 = 2 ]]; then
         echo -e "
         ${grayColour}Análisis de Vulerabilidades${endColour}${greenColour}
 
@@ -256,13 +262,91 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
 					[35] Yersinia
 
 [0] Instalar todas las herramientas de AV
-				 
+[99] Volver atrás				 
 						"
         echo -ne "${yellowColour}Elige una opción: ${endColour}"
-        read opcion21
-    elif [[ $opcion2=3 ]]; then
+        read opcion22
+        if [[ $opcion22 = 1 ]]; then
+            sudo apt install bbqsql
+        elif [[ $opcion22 = 2 ]]; then
+            sudo apt install bed
+        elif [[ $opcion22 = 3 ]]; then
+            sudo apt install cisco-auditing-tool
+        elif [[ $opcion22 = 4 ]]; then
+            sudo apt install cisco-global-exploiter
+        elif [[ $opcion22 = 5 ]]; then
+            sudo apt install cisco-ocs
+        elif [[ $opcion22 = 6 ]]; then
+            sudo apt install cisco-torch
+        elif [[ $opcion22 = 7 ]]; then
+            sudo apt install copy-router-config
+        elif [[ $opcion22 = 8 ]]; then
+            sudo apt install git && git clone https://github.com/stasinopoulos/commix.git commix && cd commix && python ./commix.py --install
+        elif [[ $opcion22 = 9 ]]; then
+            echo 'download page : http://www.cqure.net/wp/tools/database/dbpwaudit/'
+        elif [[ $opcion22 = 10 ]]; then
+            sudo apt install doona
+        elif [[ $opcion22 = 11 ]]; then
+            sudo apt install dotdotpwn
+        elif [[ $opcion22 = 12 ]]; then
+            sudo apt install greenbone-security-assistant
+        elif [[ $opcion22 = 13 ]]; then
+            sudo apt install git && git clone git://git.kali.org/packages/gsd.git
+        elif [[ $opcion22 = 14 ]]; then
+            sudo apt install hexorbase
+        elif [[ $opcion22 = 15 ]]; then
+            echo -e "${greenColour}Please download inguma from : http://inguma.sourceforge.net${endColour}"
+        elif [[ $opcion22 = 16 ]]; then
+            sudo apt install jsql
+        elif [[ $opcion22 = 17 ]]; then
+            sudo apt install lynis
+        elif [[ $opcion22 = 18 ]]; then
+            sudo apt install nmap
+        elif [[ $opcion22 = 19 ]]; then
+            sudo apt install ohrwurm
+        elif [[ $opcion22 = 20 ]]; then
+            sudo apt install openvas-administrator
+        elif [[ $opcion22 = 21 ]]; then
+            sudo apt install openvas-cli
+        elif [[ $opcion22 = 22 ]]; then
+            sudo apt install openvas-manager
+        elif [[ $opcion22 = 23 ]]; then
+            sudo apt install openvas-scanner
+        elif [[ $opcion22 = 24 ]]; then
+            sudo apt install oscanner
+        elif [[ $opcion22 = 25 ]]; then
+            sudo apt install powerfuzzer
+        elif [[ $opcion22 = 26 ]]; then
+            sudo apt install sfuzz
+        elif [[ $opcion22 = 27 ]]; then
+            sudo apt install sidguesser
+        elif [[ $opcion22 = 28 ]]; then
+            sudo apt install siparmyknife
+        elif [[ $opcion22 = 29 ]]; then
+            sudo apt install sqlmap
+        elif [[ $opcion22 = 30 ]]; then
+            sudo apt install sqlninja
+        elif [[ $opcion22 = 31 ]]; then
+            sudo apt install sqlsus
+        elif [[ $opcion22 = 32 ]]; then
+            sudo apt install thc-ipv6
+        elif [[ $opcion22 = 33 ]]; then
+            sudo apt install tnscmd10g
+        elif [[ $opcion22 = 34 ]]; then
+            sudo apt install unix-privesc-check
+        elif [[ $opcion22 = 35 ]]; then
+            sudo apt install yersinia
+        elif [[ $opcion22 = 0 ]]; then
+            sudo apt install -y bbqsql bed cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch copy-router-config doona dotdotpwn greenbone-security-assistant hexorbase jsql lynis nmap ohrwurm openvas-cli openvas-manager openvas-scanner oscanner powerfuzzer sfuzz sidguesser siparmyknife sqlmap sqlninja sqlsus thc-ipv6 tnscmd10g unix-privesc-check yersinia
+        elif [[ $opcion22 = 99 ]]; then
+            Principal
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+
+    elif [[ $opcion2 = 3 ]]; then
         echo -e "
-        ${grayColour} Análisis de Aplicaciones Web${endColour}${greenColour}
+        ${grayColour} Ataque a Redes Inalámbricas${endColour}${greenColour}
 
 [1] Aircrack-ng				[16] kalibrate-rtl
 [2] Asleap				[17] KillerBee
@@ -280,7 +364,13 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
 [14] GISKismet				[29] Wifi Honey
 [15] gr-scan				[30] Wifite 
 
-[0] Install todas las herramientas de WA"
+[0] Instalar todas las herramientas de WA
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion22
+    
+    elif [[ $opcion2 = 0 ]]; then
+        Principal
     fi
     echo -ne "${yellowColour}Elige una opción: ${endColour}"
     read opcion21
@@ -387,6 +477,9 @@ function Caso2(){
     MenuGlogal2
     if [[ $opciong2 = 1 ]]; then
         MenuOpcion21
+    elif [[ $opciong2 = 4 ]]; then
+        sleep 0.5
+        Principal
     fi
 }
 
@@ -396,6 +489,5 @@ while [[ $opcion != 4 ]]; do
     case $opcion in
         1) Caso1;;
         2) Caso2;;
-        4) exit 0;;
     esac
 done
