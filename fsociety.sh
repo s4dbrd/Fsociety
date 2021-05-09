@@ -1192,7 +1192,19 @@ function Principal(){
 }
 
 function PanelAyuda(){
-    echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./fsociety.sh${endColour}"
+    clear
+    Banner
+    echo -e "\n${yellowColour}[*]${endColour}${grayColour} Funcionamiento:${endColour}
+    \n\n${yellowColour}[1]${endColour}${blueColour} Añadir Repositorios y Actualizar Sistema${endColour}${purpleColour} ->${endColour}${greenColour} Nos permite actualizar sistema, añadir repositorios de Kali Linux\no eliminarlo si ya no es necesario su uso y poder ver el contenido de sources.list.${endColour}
+    \n${yellowColour}[2]${endColour}${blueColour} Herramientas${endColour}${purpleColour} ->${endColour}${greenColour} Nos da la opción de instalar por categorías los binarios de Kali Linux, un pequeño programa que nos crackea contraseñas encriptadas\ny una enumeración exhaustiva del sistema para ver si tiene fallas de seguridad.${endColour}
+    \n${yellowColour}[3]${endColour}${blueColour} Menú Ayuda${endColour}${purpleColour} ->${endColour}${greenColour} Nos muestra el panel de ayuda.
+    \n\n${yellowColour}[99]${endColour}${blueColour} Volver atrás${endColour}\n"
+    echo -ne "\n\n${purpleColour}[*]${endColour}${grayColour} Presiona '99' para volver al menú inicio: ${endColour}"
+    read helpopt
+    if [[ $helpopt = 99 ]]; then
+        sleep 0.5
+        Principal
+    fi
 }
 
 function Actualizar(){
@@ -1529,6 +1541,9 @@ while true; do
             echo -e "\n${redColour}[!]${endColour}${lightRed} Introduce una opción correcta ${endColour}${redColour}[!]${endColour}\n"
             sleep 0.5
         fi
+    done
+    while [[ $opcion = 3 ]]; do
+        PanelAyuda
     done
     if [[ $opcion = 4 ]]; then
         echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}\n"
