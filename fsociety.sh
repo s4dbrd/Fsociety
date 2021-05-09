@@ -1328,11 +1328,10 @@ function EnumerarSistema(){
     echo -e "\n${yellowColour}[*]${endColour}${blueColour} Enumeración del Sistema${endColour}
 
 [1] Características del Sistema
-[2] MD4
-[3] krb4	
-[4] krb5
-[5] mysql
-[6] raw-sha512
+[2] Información sobre usuarios
+[3] Buscar permisos	
+[4] Buscar archivos con contraseñas
+[5] Enumerar paquetería
 
 [99] Volver atrás"
     echo -ne "${yellowColour}Elige una opción: ${endColour}"
@@ -1343,6 +1342,7 @@ function EnumerarSistema(){
 [1] Información sobre el sistema
 [2] Información sobre la red
 [3] Información sobre sistema de archivos
+[4] Información sobre cronjobs
 
 [99] Volver atrás"
             echo -ne "${yellowColour}Elige una opción: ${endColour}"
@@ -1379,7 +1379,85 @@ function EnumerarSistema(){
                             echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Puntos de Montaje: ${endColour}\n${mount}\n"
                         fi
                         echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Fstab: ${endColour}${fstab}\n"
+                    elif [[ $sysopt1 = 4 ]]; then
+                        cron=`sudo ls -la /etc/cron* 2>/dev/null`
+                        cronw=`sudo ls -aRl /etc/cron* 2>/dev/null | awk '$1 ~ /w.$/' 2>/dev/null`
+                        cronu=`crontab -l 2>/dev/null`
+                        echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Tareas Cron: ${endColour}${cron}"
+                        if [ -z "$crown" ]; then
+                            echo -e "\n${redColour}[!]${endColour}${lightRed} No hay tareas cron con permisos de escritura${endColour}${redColour} [!]${endColour}" 
+                        else
+                                echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Tareas Cron con Permisos de Escritura: ${endColour}${cronw}\n"
+                        fi
+                        if [ -z "$cronu" ]; then
+                            echo -e "\n${redColour}[!]${endColour}${lightRed} No hay tareas crontab corriendo${endColour}${redColour} [!]${endColour}" 
+                        else
+                                echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Tareas Crontab: ${endColour}${cronu}\n"
+                        fi
+                    elif [[ $sysopt1 = 99 ]]; then
+                        sleep 0.5
+                        EnumerarSistema
                     fi
+        elif [[ $sysopt = 2 ]]; then
+            echo -e "\n${yellowColour}[*]${endColour}${blueColour} Información sobre usuarios${endColour}
+
+[1] Información sobre usuarios
+[2] Enumerar ficheros de historial
+[3] Enumerar RCFiles
+
+[99] Volver atrás"
+        echo -ne "${yellowColour}Elige una opción: ${endColour}"
+                    read sysopt2
+                    if [[ $sysopt2 = 1 ]]; then
+                        whoami=`whoami`
+                        id=`id`
+                        passwd=`cat /etc/passwd`
+                        superusers=`grep -v -E '^#' /etc/passwd | awk -F: '$3 == 0{print $1}'`
+                        env=`env 2>/dev/null | grep -v 'LS_COLORS'`
+                        sudoers=`cat /etc/sudoers 2>/dev/null | grep -v '#' 2>/dev/null`
+                        screens=`screen -ls 2>/dev/null`
+                        conectados=`who -a 2>/dev/null`
+                        echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Usuario Actual: ${endColour}${whoami}
+                        \n${yellowColour}[*]${endColour}${purpleColour} ID Usuario: ${endColour}${id}
+                        \n${yellowColour}[*]${endColour}${purpleColour} Usuarios del Sistema: ${endColour}\n${passwd}\n
+                        \n${yellowColour}[*]${endColour}${purpleColour} Superusuarios encontrados: ${endColour}\n${superusers}\n
+                        \n${yellowColour}[*]${endColour}${purpleColour} Entornos encontrados: ${endColour}\n${env}\n
+                        \n${yellowColour}[*]${endColour}${purpleColour} Privilegios de Sudoers: ${endColour}\n${sudoers}\n
+                        \n${yellowColour}[*]${endColour}${purpleColour} Sesiones de Screen: ${endColour}\n${screens}\n
+                        \n${yellowColour}[*]${endColour}${purpleColour} Usuarios Conectados: ${endColour}\n${conectados}\n"
+                    elif [[ $sysopt2 = 2 ]]; then
+                        rhistory=`ls -la /root/.*_history 2>/dev/null`
+                        bhistory=`cat ~/.bash_history 2>/dev/null`
+                        nanohistory=`cat ~/.nano_history 2>/dev/null`
+                        mysqlhistory=`cat ~/.mysql_history 2>/dev/null`
+                        phphistory=`cat ~/.php_history 2>/dev/null`
+                        pythonhistory=`cat ~/.python_history 2>/dev/null`
+                        echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Historial Root: ${endColour}\n${rhistory}
+                        \n${yellowColour}[*]${endColour}${purpleColour} Historial Bash: ${endColour}\n${bhistory}
+                        \n${yellowColour}[*]${endColour}${purpleColour} Historial Nano: ${endColour}\n${nanohistory}\n
+                        \n${yellowColour}[*]${endColour}${purpleColour} Historial MYSQL: ${endColour}\n${mysqlhistory}\n
+                        \n${yellowColour}[*]${endColour}${purpleColour} Historial PHP: ${endColour}\n${phphistory}\n
+                        \n${yellowColour}[*]${endColour}${purpleColour} Historial Python: ${endColour}\n${pythonhistory}\n"
+                    elif [[ $sysopt2 = 3 ]]; then
+                        shellhrc=`cat ~/.*rc 2>/dev/null`
+                        screenrc=`cat ~/.screenrc 2>/dev/null`
+                        echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Configuración de shell: ${endColour}\n${shellrc}
+                        \n${yellowColour}[*]${endColour}${purpleColour} Configuración de Screen: ${endColour}\n${screenrc}"
+                    fi
+        elif [[ $sysopt = 3 ]]; then
+            eroot=`find / \( -wholename '/home/homedir*' -prune \) -o \( -type d -perm -0002 \) -exec ls -ld '{}' ';' 2>/dev/null | grep root`
+            eotro=`find / \( -wholename '/home/homedir*' -prune \) -o \( -type d -perm -0002 \) -exec ls -ld '{}' ';' 2>/dev/null | grep -v root`
+            earchivo=`find / \( -wholename '/home/homedir/*' -prune -o -wholename '/proc/*' -prune \) -o \( -type f -perm -0002 \) -exec ls -l '{}' ';' 2>/dev/null`
+            suid=`find / \( -perm -2000 -o -perm -4000 \) -exec ls -ld {} \; 2>/dev/null`
+            echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Archivos con escritura de root: ${endColour}\n${eroot}
+                    \n${yellowColour}[*]${endColour}${purpleColour} Archivos con escritura de otro usuario: ${endColour}\n${bhistory}
+                    \n${yellowColour}[*]${endColour}${purpleColour} Permisos de escritura sobre: ${endColour}\n${earchivo}\n
+                    \n${yellowColour}[*]${endColour}${purpleColour} Archivos con SUID: ${endColour}\n${suid}\n"
+        elif [[ $sysopt = 4 ]]; then
+            
+        elif [[ $sysopt = 99 ]]; then
+            sleep 0.5
+            Principal
         fi
 
 }
@@ -1412,6 +1490,16 @@ while true; do
         elif [[ $opciong2 = 2 ]]; then
             Crackeo
         elif [[ $opciong2 = 3 ]]; then
+            if [ -z "$(which bat)" ]; then
+                echo -e "\n${yellowColour}[*]${endColour}${grayColour} ¿Quieres instalar una herramienta para mejorar la visibilidad? [Ss]: ${endColour}"
+                read opcionbat
+                if [[ $opcionbat = [Ss] ]]; then
+                    wget https://github.com/sharkdp/bat/releases/download/v0.18.0/bat_0.18.0_amd64.deb
+                    sudo dpkg -i bat_0.18.0_amd64.deb
+                    sleep 0.5
+                    `alias cat='/usr/bin/bat'`
+                fi
+            fi
             EnumerarSistema
         elif [[ $opciong2 = 4 ]]; then
             sleep 0.5
