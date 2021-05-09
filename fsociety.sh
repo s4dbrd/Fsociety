@@ -1297,23 +1297,25 @@ function Crackeo(){
         comando=`sudo find / -name "*rockyou.txt" 2>/dev/null| head -n 1`
         if [ -z "$comando" ]; then
             wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+            sleep 1
+            $comando
         fi
         if [[ $crackopt = 1 ]]; then
             sudo john --format=raw-md5 --wordlist=$comando $file
         elif [[ $crackopt = 2 ]]; then
-            sudo john --format=raw-md4 --wordlist=rockyou.txt $file
+            sudo john --format=raw-md4 --wordlist=$comando $file
         elif [[ $crackopt = 3 ]]; then
-            sudo john --format=krb4 --wordlist=rockyou.txt $file
+            sudo john --format=krb4 --wordlist=$comando $file
         elif [[ $crackopt = 4 ]]; then
-            sudo john --format=krb5 --wordlist=rockyou.txt $file
+            sudo john --format=krb5 --wordlist=$comando $file
         elif [[ $crackopt = 5 ]]; then
-            sudo john --format=mysql --wordlist=rockyou.txt $file
+            sudo john --format=mysql --wordlist=$comando $file
         elif [[ $crackopt = 6 ]]; then
-            sudo john --format=raw-sha512 --wordlist=rockyou.txt $file
+            sudo john --format=raw-sha512 --wordlist=$comando $file
         elif [[ $crackopt = 0 ]]; then
             echo -ne "${yellowColour}Indica el tipo de encriptación: ${endColour}"
                 read crackopt0
-                sudo john --format=$crackopt0 --wordlist=rockyou.txt $file
+                sudo john --format=$crackopt0 --wordlist=$comando $file
         elif [[ $crackopt = 99 ]]; then
             sleep 0.5
             Principal
