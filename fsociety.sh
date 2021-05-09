@@ -1331,7 +1331,7 @@ function EnumerarSistema(){
 [2] Información sobre usuarios
 [3] Buscar permisos	
 [4] Buscar archivos con contraseñas
-[5] Enumerar paquetería
+[5] Enumerar paquetería y procesos
 
 [99] Volver atrás"
     echo -ne "${yellowColour}Elige una opción: ${endColour}"
@@ -1445,6 +1445,7 @@ function EnumerarSistema(){
                         \n${yellowColour}[*]${endColour}${purpleColour} Configuración de Screen: ${endColour}\n${screenrc}"
                     fi
         elif [[ $sysopt = 3 ]]; then
+            echo -e "\n${yellowColour}[*]${endColour}${blueColour} Buscar Permisos${endColour}"
             eroot=`find / \( -wholename '/home/homedir*' -prune \) -o \( -type d -perm -0002 \) -exec ls -ld '{}' ';' 2>/dev/null | grep root`
             eotro=`find / \( -wholename '/home/homedir*' -prune \) -o \( -type d -perm -0002 \) -exec ls -ld '{}' ';' 2>/dev/null | grep -v root`
             earchivo=`find / \( -wholename '/home/homedir/*' -prune -o -wholename '/proc/*' -prune \) -o \( -type f -perm -0002 \) -exec ls -l '{}' ';' 2>/dev/null`
@@ -1454,12 +1455,32 @@ function EnumerarSistema(){
                     \n${yellowColour}[*]${endColour}${purpleColour} Permisos de escritura sobre: ${endColour}\n${earchivo}\n
                     \n${yellowColour}[*]${endColour}${purpleColour} Archivos con SUID: ${endColour}\n${suid}\n"
         elif [[ $sysopt = 4 ]]; then
-            
+            echo -e "\n${yellowColour}[*]${endColour}${blueColour} Buscar Archivos con Contraseñas${endColour}"
+            logpasswd=`find /var/log -name '*.log' 2>/dev/null | xargs -l10 egrep 'pwd|password' 2>/dev/null`
+            confpasswd=`find /etc -name '*.c*' 2>/dev/null | xargs -l10 egrep 'pwd|password' 2>/dev/null`
+            shadow=`cat /etc/shadow 2>/dev/null`
+            echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Archivos logs con contraseña: ${endColour}\n${eroot}
+                    \n${yellowColour}[*]${endColour}${purpleColour} Archivos conf con contraseña: ${endColour}\n${bhistory}
+                    \n${yellowColour}[*]${endColour}${purpleColour} Archivo Shadow (Privilegiado): ${endColour}\n${earchivo}\n"
+        elif [[ $sysopt = 5 ]]; then
+            echo -e "\n${yellowColour}[*]${endColour}${blueColour} Enumerar paquetería y procesos${endColour}"
+            if [ $(cat /proc/version | grep debian) || $(cat /proc/version | grep ubuntu) ]; then
+                getpkgs = `dpkg -l`
+            else
+                getpkgs = `rpm -qa | sort -u`
+            fi
+            procesos=`ps waux | awk '{print $1,$2,$9,$10,$11}'`
+            sudo=`sudo -V | grep version 2>/dev/null`
+            apache=`apache2 -v; apache2ctl -M; httpd -v; apachectl -l 2>/dev/null`
+            echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Procesos activos: ${endColour}\n${procesos}
+                    \n${yellowColour}[*]${endColour}${purpleColour} Versión de sudo: ${endColour}${sudo}${greenColour} Cuidado con: https://www.exploit-db.com/search?q=sudo${endColour}
+                    \n${yellowColour}[*]${endColour}${purpleColour} Versión de apache: ${endColour}${apache}\n"
         elif [[ $sysopt = 99 ]]; then
             sleep 0.5
             Principal
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
-
 }
 
 # Main Program
