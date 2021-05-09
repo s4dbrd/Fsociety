@@ -435,6 +435,53 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
     
+    elif [[ $opcion2 = 4 ]]; then
+        echo -e "
+        ${grayColour} Evaluación de Base de Datos${endColour}${greenColour}
+
+[1] jSQL
+[2] mdb-sql
+[3] oscanner
+[4] sidguesser
+[5] sqldict	
+[6] SQLite
+[7] sqlmap
+[8] sqlninja-ng
+[9] sqlsus
+[10] tnscmd10g
+
+[0] Instalar todas las herramientas de Evaluación
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read opcion22
+        if [[ $opcion22 = 1 ]]; then
+            sudo apt install jsql
+        elif [[ $opcion22 = 2 ]]; then
+            sudo apt install mdbtools
+        elif [[ $opcion22 = 3 ]]; then
+            sudo apt install oscanner
+        elif [[ $opcion22 = 4 ]]; then
+            sudo apt install sidguesser
+        elif [[ $opcion22 = 5 ]]; then
+            sudo apt install sqldict
+        elif [[ $opcion22 = 6 ]]; then
+            sudo apt install sqlite
+        elif [[ $opcion22 = 7 ]]; then
+            sudo apt install sqlmap
+        elif [[ $opcion22 = 8 ]]; then
+            sudo apt install sqlninja
+        elif [[ $opcion22 = 9 ]]; then
+            sudo apt install sqlsus
+        elif [[ $opcion22 = 10 ]]; then
+            sudo apt install tnscmd10g
+        elif [[ $opcion22 = 0 ]]; then
+            sudo apt install -y jsql mdbtools oscanner sidguesser sqldict sqlite sqlmap sqlninja sqlsus tnscmd10g
+        elif [[ $opcion22 = 99 ]]; then
+            sleep 0.5
+            MenuOpcion21
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
     elif [[ $opcion2 = 5 ]]; then
         echo -e "
         ${grayColour} Crackeo de contraseñas${endColour}${greenColour}
@@ -521,7 +568,7 @@ ${grayColour} Recopilación de Información${endColour}${greenColour}
         elif [[ $opcion25 = 29 ]]; then
             sudo apt install rsmangler
         elif [[ $opcion25 = 30 ]]; then
-            echo -e "\n${redColour}[!]${endColour}${lightRed} Sqldict no se puede descargar${endColour}${redColour} [!]${endColour}"
+            sudo apt install sqldict
         elif [[ $opcion25 = 31 ]]; then
             sudo apt install statsprocessor
         elif [[ $opcion25 = 32 ]]; then
@@ -1256,6 +1303,9 @@ while true; do
         elif [[ $opciong2 = 4 ]]; then
             sleep 0.5
             Principal
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Introduce una opción correcta ${endColour}${redColour}[!]${endColour}\n"
+            sleep 0.5
         fi
     done
 
