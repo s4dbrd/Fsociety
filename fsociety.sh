@@ -54,7 +54,7 @@ function MenuOpcion1(){
 }
 
 function MenuGlogal2(){
-    echo -e "\n${purpleColour}[1]${endColour}${turquoiseColour} Instalar herramientas${endColour}\n\n${purpleColour}[2]${endColour}${turquoiseColour} Crackeo de contraseñas${endColour}\n\n${purpleColour}[3]${endColour}${turquoiseColour} Seguridad del Sistema${endColour}\n\n${purpleColour}[4]${endColour}${turquoiseColour} Volver atrás${endColour}\n"
+    echo -e "\n${purpleColour}[1]${endColour}${turquoiseColour} Instalar herramientas${endColour}\n\n${purpleColour}[2]${endColour}${turquoiseColour} Crackeo de contraseñas${endColour}\n\n${purpleColour}[3]${endColour}${turquoiseColour} Enumeración del Sistema${endColour}\n\n${purpleColour}[4]${endColour}${turquoiseColour} Volver atrás${endColour}\n"
     echo -ne "${yellowColour}Elige una opción: ${endColour}"
     read opciong2
 }
@@ -1324,6 +1324,66 @@ function Crackeo(){
         fi
 }
 
+function EnumerarSistema(){
+    echo -e "\n${yellowColour}[*]${endColour}${blueColour} Enumeración del Sistema${endColour}
+
+[1] Características del Sistema
+[2] MD4
+[3] krb4	
+[4] krb5
+[5] mysql
+[6] raw-sha512
+
+[99] Volver atrás"
+    echo -ne "${yellowColour}Elige una opción: ${endColour}"
+        read sysopt
+        if [[ $sysopt = 1 ]]; then
+            echo -e "\n${yellowColour}[*]${endColour}${blueColour} Características del Sistema${endColour}
+
+[1] Información sobre el sistema
+[2] Información sobre la red
+[3] Información sobre sistema de archivos
+
+[99] Volver atrás"
+            echo -ne "${yellowColour}Elige una opción: ${endColour}"
+                    read sysopt1
+                    if [[ $sysopt1 = 1 ]]; then
+                        os=`sudo cat /etc/issue | awk '{print $1" " $2" " $3}'`
+                        kernel=`sudo cat /proc/version`
+                        hostname=`sudo hostname`
+                        echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Sistema Operativo: ${endColour}${os}
+                        \n${yellowColour}[*]${endColour}${purpleColour} Kernel: ${endColour}${kernel}
+                        \n${yellowColour}[*]${endColour}${purpleColour} Hostname: ${endColour}${hostname}\n"
+                    elif [[ $sysopt1 = 2 ]]; then
+                        netinfo=`/sbin/ifconfig -a`
+                        route=`route`
+                        netstat=`netstat -antup | grep -v 'TIME_WAIT'`
+                        echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Netinfo: ${endColour}${netinfo}
+                        \n${yellowColour}[*]${endColour}${purpleColour} Route: ${endColour}${route}
+                        \n${yellowColour}[*]${endColour}${purpleColour} Netstat: ${endColour}${netstat}\n"
+                    elif [[ $sysopt1 = 3 ]]; then
+                        mount=`mount`
+                        fstab=`cat /etc/fstab 2>/dev/null| tail -n +2`
+                        echo -ne "\n${yellowColour}¿Quieres filtrar la información de los dispositivos montados?: ${endColour}"
+                        read mountopt
+                        if [[ $mountopt = [Ss] ]]; then
+                            echo -ne "${greenColour}Introduce el dispositivo de bloques que deseas verificar: ${endColour}"
+                            read montaje
+                            mountfiltered=`mount | grep ${montaje}`
+                            if [ -z "$mountfiltered" ]; then
+                                echo -e "\n${redColour}[!]${endColour}${lightRed} El dispositivo no existe${endColour}${redColour} [!]${endColour}" 
+                            else
+                                echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Punto de Montaje: ${endColour}${mountfiltered}\n"
+                            fi
+                        else
+                            echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Puntos de Montaje: ${endColour}\n${mount}\n"
+                        fi
+                        echo -e "\n${yellowColour}[*]${endColour}${purpleColour} Fstab: ${endColour}${fstab}\n"
+                    fi
+        fi
+
+}
+
 # Main Program
 while true; do
     Principal
@@ -1351,6 +1411,8 @@ while true; do
             MenuOpcion21
         elif [[ $opciong2 = 2 ]]; then
             Crackeo
+        elif [[ $opciong2 = 3 ]]; then
+            EnumerarSistema
         elif [[ $opciong2 = 4 ]]; then
             sleep 0.5
             Principal
@@ -1359,7 +1421,6 @@ while true; do
             sleep 0.5
         fi
     done
-
     if [[ $opcion = 4 ]]; then
         echo -e "\n${yellowColour}[*]${endColour}${grayColour} Saliendo...${endColour}\n"
         sleep 0.2
