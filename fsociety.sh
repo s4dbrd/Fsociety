@@ -1275,6 +1275,53 @@ function BorrarRepositorios(){
     fi
 }
 
+function Crackeo(){
+    echo -e "\n${yellowColour}[*]${endColour}${blueColour} Crackeo de Contraseñas${endColour}
+
+[1] MD5
+[2] MD4
+[3] krb4	
+[4] krb5
+[5] mysql
+[6] raw-sha512
+
+[0] Indicar otro sistema de encriptado
+[99] Volver atrás"
+    echo -ne "${yellowColour}Indica el tipo de encriptación: ${endColour}"
+        read crackopt
+    echo -ne "${yellowColour}Indica el archivo con los hashes: ${endColour}"
+        read file
+        echo -e "\n${yellowColour}[*]${endColour}${grayColour} Instalando binarios necesarios...${endColour}\n"
+        sleep 0.5
+        sudo apt install john -y
+        comando=`sudo find / -name "*rockyou.txt" 2>/dev/null| head -n 1`
+        if [ -z "$comando" ]; then
+            wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+        fi
+        if [[ $crackopt = 1 ]]; then
+            sudo john --format=raw-md5 --wordlist=$comando $file
+        elif [[ $crackopt = 2 ]]; then
+            sudo john --format=raw-md4 --wordlist=rockyou.txt $file
+        elif [[ $crackopt = 3 ]]; then
+            sudo john --format=krb4 --wordlist=rockyou.txt $file
+        elif [[ $crackopt = 4 ]]; then
+            sudo john --format=krb5 --wordlist=rockyou.txt $file
+        elif [[ $crackopt = 5 ]]; then
+            sudo john --format=mysql --wordlist=rockyou.txt $file
+        elif [[ $crackopt = 6 ]]; then
+            sudo john --format=raw-sha512 --wordlist=rockyou.txt $file
+        elif [[ $crackopt = 0 ]]; then
+            echo -ne "${yellowColour}Indica el tipo de encriptación: ${endColour}"
+                read crackopt0
+                sudo john --format=$crackopt0 --wordlist=rockyou.txt $file
+        elif [[ $crackopt = 99 ]]; then
+            sleep 0.5
+            Principal
+        else
+            echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+}
+
 # Main Program
 while true; do
     Principal
@@ -1300,6 +1347,8 @@ while true; do
         MenuGlogal2   
         if [[ $opciong2 = 1 ]]; then
             MenuOpcion21
+        elif [[ $opciong2 = 2 ]]; then
+            Crackeo
         elif [[ $opciong2 = 4 ]]; then
             sleep 0.5
             Principal
