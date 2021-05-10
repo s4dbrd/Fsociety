@@ -36,10 +36,12 @@ function ctrl_c(){
     exit 1
 }
 
-if [[ $EUID -ne 0 ]]; then
-    echo -e "\n${redColour}[!]${endColour}${redColour} Tienes que ser root para ejecutar el script ${endColour}${redColour}[!]"
-    exit 1
-fi
+function root(){
+    if [[ $EUID -ne 0 ]]; then
+        echo -e "\n${redColour}[!]${endColour}${redColour} Tienes que ser root para ejecutar esta opción (${endColour}${lightRed}sudo ./fsociety${endColour}${redColour}) [!]"
+        exit 1
+    fi
+}
 
 function Menu(){
     echo -e "\n${yellowColour}[1]${endColour}${blueColour} Añadir Repositorios y Actualizar Sistema${endColour}\n\n${yellowColour}[2]${endColour}${blueColour} Herramientas${endColour}\n\n${yellowColour}[3]${endColour}${blueColour} Menú Ayuda${endColour}\n\n${yellowColour}[4]${endColour}${blueColour} Salir${endColour}\n"
@@ -1195,7 +1197,7 @@ function PanelAyuda(){
     clear
     Banner
     echo -e "\n${yellowColour}[*]${endColour}${grayColour} Funcionamiento:${endColour}
-    \n\n${yellowColour}[1]${endColour}${blueColour} Añadir Repositorios y Actualizar Sistema${endColour}${purpleColour} ->${endColour}${greenColour} Nos permite actualizar sistema, añadir repositorios de Kali Linux\no eliminarlo si ya no es necesario su uso y poder ver el contenido de sources.list.${endColour}
+    \n\n${yellowColour}[1]${endColour}${blueColour} Añadir Repositorios y Actualizar Sistema (Root)${endColour}${purpleColour} ->${endColour}${greenColour} Nos permite actualizar sistema, añadir repositorios de Kali Linux\no eliminarlo si ya no es necesario su uso y poder ver el contenido de sources.list.${endColour}
     \n${yellowColour}[2]${endColour}${blueColour} Herramientas${endColour}${purpleColour} ->${endColour}${greenColour} Nos da la opción de instalar por categorías los binarios de Kali Linux, un pequeño programa que nos crackea contraseñas encriptadas\ny una enumeración exhaustiva del sistema para ver si tiene fallas de seguridad.${endColour}
     \n${yellowColour}[3]${endColour}${blueColour} Menú Ayuda${endColour}${purpleColour} ->${endColour}${greenColour} Nos muestra el panel de ayuda.
     \n\n${yellowColour}[99]${endColour}${blueColour} Volver atrás${endColour}\n"
@@ -1499,6 +1501,7 @@ function EnumerarSistema(){
 while true; do
     Principal
     while [[ $opcion = 1 ]]; do
+        root
         MenuOpcion1
         if [[ $opcion1 = 1 ]]; then
             Actualizar
