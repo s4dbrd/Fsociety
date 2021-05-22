@@ -1303,17 +1303,6 @@ function Crackeo(){
 [99] Volver atrás"
     echo -ne "${yellowColour}Indica el tipo de encriptación: ${endColour}"
         read crackopt
-    echo -ne "${yellowColour}Indica el archivo con los hashes: ${endColour}"
-        read file
-        echo -e "\n${yellowColour}[*]${endColour}${grayColour} Instalando binarios necesarios...${endColour}\n"
-        sleep 0.5
-        sudo apt install john -y
-        comando=`sudo find / -name "*rockyou.txt" 2>/dev/null| head -n 1`
-        if [ -z "$comando" ]; then
-            wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
-            sleep 1
-            $comando
-        fi
         if [[ $crackopt = 1 ]]; then
             sudo john --format=raw-md5 --wordlist=$comando $file
         elif [[ $crackopt = 2 ]]; then
@@ -1332,9 +1321,22 @@ function Crackeo(){
                 sudo john --format=$crackopt0 --wordlist=$comando $file
         elif [[ $crackopt = 99 ]]; then
             sleep 0.5
-            Principal
+            MenuGlogal2
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
+        fi
+        if [[ $crackopt != 99 ]]; then
+            echo -ne "${yellowColour}Indica el archivo con los hashes: ${endColour}"
+            read file
+            echo -e "\n${yellowColour}[*]${endColour}${grayColour} Instalando binarios necesarios...${endColour}\n"
+            sleep 0.5
+            sudo apt install john -y
+            comando=`sudo find / -name "*rockyou.txt" 2>/dev/null| head -n 1`
+            if [ -z "$comando" ]; then
+                wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+                sleep 1
+                $comando
+            fi
         fi
 }
 
@@ -1491,7 +1493,7 @@ function EnumerarSistema(){
                     \n${yellowColour}[*]${endColour}${purpleColour} Versión de apache: ${endColour}${apache}\n"
         elif [[ $sysopt = 99 ]]; then
             sleep 0.5
-            Principal
+            EnumerarSistema
         else
             echo -e "\n${redColour}[!]${endColour}${lightRed} Opción Incorrecta${endColour}${redColour} [!]${endColour}"
         fi
