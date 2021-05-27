@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Autor: Adrian Diaz
+# Autor: Adrian Diaz (s4dbrd)
 
 #Colours
 greenColour="\e[0;32m\033[1m"
@@ -24,7 +24,7 @@ function Banner(){
  / _|___  ___   ___(_) ___| |_ _   _ 
 | |_/ __|/ _ \ / __| |/ _ \ __| | | |
 |  _\__ \ (_) | (__| |  __/ |_| |_| |
-|_| |___/\___/ \___|_|\___|\__|\__, |\t\t\t  ${grayColour}Created by: ${endColour}${yellowColour}Adrián Díaz${lightRed}
+|_| |___/\___/ \___|_|\___|\__|\__, |\t\t\t  ${grayColour}Created by: ${endColour}${yellowColour}s4dbrd${lightRed}
                                |___/ 
  "
 }
